@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aleut Technologies — SEO Bhopal | Rank. Dominate. Convert.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#08090d;
+  --bg2:#0f1116;
+  --bg3:#151820;
+  --line:#ffffff0f;
+  --line2:#ffffff18;
+  --text:#f0ede6;
+  --text2:#9b9a96;
+  --text3:#5a5955;
+  --gold:#c8a84b;
+  --gold2:#e8c96e;
+  --fire:#ff4d1c;
+  --fire2:#ff7a45;
+  --teal:#00d4aa;
+  --white:#ffffff;
+  --ff-display:'Cormorant Garamond',serif;
+  --ff-sans:'Syne',sans-serif;
+  --ff-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff-sans);background:var(--bg);color:var(--text);overflow-x:hidden;cursor:none}
+
+/* ── CURSOR ── */
+.cursor{position:fixed;pointer-events:none;z-index:9999;mix-blend-mode:difference}
+.cursor-dot{width:8px;height:8px;background:var(--white);border-radius:50%;transform:translate(-50%,-50%);transition:transform .1s}
+.cursor-ring{width:36px;height:36px;border:1px solid rgba(255,255,255,0.6);border-radius:50%;transform:translate(-50%,-50%);transition:all .15s ease;position:absolute;top:0;left:0}
+body:hover .cursor-dot{transform:translate(-50%,-50%) scale(1)}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 4vw;height:72px;
+  border-bottom:1px solid var(--line);
+  background:rgba(8,9,13,0.85);
+  backdrop-filter:blur(20px);
+}
+.logo{
+  font-family:var(--ff-sans);font-weight:800;font-size:1.1rem;
+  letter-spacing:0.12em;text-transform:uppercase;color:var(--white);
+  display:flex;align-items:center;gap:0.5rem;
+}
+.logo-dot{width:8px;height:8px;background:var(--fire);border-radius:50%;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.nav-center{display:flex;gap:2.5rem;list-style:none}
+.nav-center a{font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text2);text-decoration:none;transition:color .2s}
+.nav-center a:hover{color:var(--white)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.nav-badge{
+  font-family:var(--ff-mono);font-size:0.7rem;
+  color:var(--teal);border:1px solid rgba(0,212,170,0.3);
+  padding:0.3rem 0.7rem;border-radius:2px;
+  letter-spacing:0.08em;
+}
+.btn-nav{
+  background:var(--fire);color:var(--white);
+  font-family:var(--ff-sans);font-size:0.75rem;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.55rem 1.25rem;border:none;border-radius:2px;
+  cursor:none;text-decoration:none;display:inline-block;
+  transition:background .2s,transform .15s;
+}
+.btn-nav:hover{background:var(--fire2);transform:translateY(-1px)}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  position:relative;
+  overflow:hidden;
+  padding-top:72px;
+}
+/* Grid lines bg */
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(var(--line) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:80px 80px;
+  pointer-events:none;
+}
+/* Glow blob */
+.hero-glow{
+  position:absolute;top:-200px;right:-200px;
+  width:800px;height:800px;
+  background:radial-gradient(circle,rgba(255,77,28,0.12) 0%,transparent 65%);
+  pointer-events:none;z-index:0;
+}
+.hero-glow2{
+  position:absolute;bottom:-300px;left:-100px;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(0,212,170,0.07) 0%,transparent 65%);
+  pointer-events:none;z-index:0;
+}
+
+.hero-left{
+  padding:80px 4vw 80px 4vw;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;z-index:1;
+  border-right:1px solid var(--line);
+}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:0.75rem;
+  margin-bottom:2rem;
+}
+.eyebrow-line{width:40px;height:1px;background:var(--gold)}
+.eyebrow-text{
+  font-family:var(--ff-mono);font-size:0.7rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--gold);
+}
+.hero-h1{
+  font-family:var(--ff-display);
+  font-size:clamp(4rem,8vw,8rem);
+  font-weight:300;
+  line-height:0.9;
+  color:var(--white);
+  margin-bottom:0.5rem;
+  letter-spacing:-0.01em;
+}
+.hero-h1 strong{font-weight:600;color:var(--fire)}
+.hero-h1 em{font-style:italic;color:var(--gold2)}
+.hero-h1-sub{
+  font-family:var(--ff-display);
+  font-size:clamp(2rem,4vw,4rem);
+  font-weight:300;font-style:italic;
+  color:var(--text2);line-height:1;
+  margin-bottom:2.5rem;
+}
+.hero-desc{
+  font-size:0.9rem;color:var(--text2);
+  max-width:440px;line-height:1.8;
+  margin-bottom:3rem;
+  border-left:2px solid var(--fire);
+  padding-left:1rem;
+}
+.hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.btn-primary{
+  background:var(--fire);color:var(--white);
+  font-family:var(--ff-sans);font-weight:700;
+  font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;
+  padding:1rem 2rem;border:none;border-radius:2px;cursor:none;
+  text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;
+  transition:all .2s;position:relative;overflow:hidden;
+}
+.btn-primary::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);
+  transform:translateX(-100%);transition:transform .4s;
+}
+.btn-primary:hover::before{transform:translateX(100%)}
+.btn-primary:hover{background:var(--fire2);transform:translateY(-2px)}
+.btn-outline{
+  border:1px solid var(--line2);color:var(--text2);
+  font-family:var(--ff-sans);font-weight:600;
+  font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;
+  padding:1rem 1.5rem;border-radius:2px;cursor:none;
+  text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;
+  transition:all .2s;
+}
+.btn-outline:hover{border-color:rgba(255,255,255,0.3);color:var(--white)}
+
+.hero-metrics{
+  margin-top:3rem;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--line);border-radius:4px;overflow:hidden;
+}
+.hero-metric{
+  padding:1.25rem 1rem;border-right:1px solid var(--line);
+}
+.hero-metric:last-child{border-right:none}
+.hm-num{
+  font-family:var(--ff-display);font-size:2.2rem;font-weight:600;
+  color:var(--white);line-height:1;margin-bottom:0.35rem;
+}
+.hm-num span{color:var(--fire);font-style:italic}
+.hm-label{font-family:var(--ff-mono);font-size:0.65rem;letter-spacing:0.1em;color:var(--text3);text-transform:uppercase}
+
+/* Hero right — visual */
+.hero-right{
+  position:relative;z-index:1;
+  display:flex;flex-direction:column;
+  overflow:hidden;
+}
+.hero-right-top{
+  flex:1;padding:80px 4vw 40px;
+  display:flex;align-items:center;justify-content:center;
+  border-bottom:1px solid var(--line);
+}
+.rank-widget{
+  width:100%;max-width:380px;
+  background:var(--bg2);
+  border:1px solid var(--line2);
+  border-radius:8px;
+  overflow:hidden;
+}
+.rw-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 1.25rem;
+  border-bottom:1px solid var(--line);
+}
+.rw-title{font-family:var(--ff-mono);font-size:0.68rem;letter-spacing:0.1em;color:var(--text3);text-transform:uppercase}
+.rw-live{
+  display:flex;align-items:center;gap:0.4rem;
+  font-family:var(--ff-mono);font-size:0.65rem;color:var(--teal);
+}
+.live-dot{width:6px;height:6px;background:var(--teal);border-radius:50%;animation:blink 1.5s ease-in-out infinite}
+.rw-body{padding:1.25rem}
+.kw-row{
+  display:flex;align-items:center;gap:0.75rem;
+  padding:0.6rem 0;
+  border-bottom:1px solid var(--line);
+}
+.kw-row:last-child{border-bottom:none}
+.kw-pos{
+  font-family:var(--ff-mono);font-size:0.75rem;font-weight:500;
+  width:28px;text-align:center;flex-shrink:0;
+}
+.pos-gold{color:var(--gold)}
+.pos-silver{color:var(--text2)}
+.pos-bronze{color:var(--fire2)}
+.pos-gray{color:var(--text3)}
+.kw-name{flex:1;font-size:0.8rem;color:var(--text);font-weight:400}
+.kw-change{
+  font-family:var(--ff-mono);font-size:0.65rem;
+  padding:0.2rem 0.5rem;border-radius:2px;
+}
+.ch-up{background:rgba(0,212,170,0.12);color:var(--teal)}
+.ch-new{background:rgba(255,77,28,0.12);color:var(--fire2)}
+.ch-same{background:rgba(255,255,255,0.05);color:var(--text3)}
+.rw-footer{
+  padding:1rem 1.25rem;
+  border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.rw-footer span{font-family:var(--ff-mono);font-size:0.65rem;color:var(--text3)}
+.rw-footer strong{color:var(--teal);font-size:0.75rem}
+
+.hero-right-bottom{
+  display:grid;grid-template-columns:1fr 1fr;
+}
+.hrb-cell{
+  padding:1.5rem;border-right:1px solid var(--line);
+  border-top:0 solid var(--line);
+}
+.hrb-cell:last-child{border-right:none}
+.hrb-label{font-family:var(--ff-mono);font-size:0.65rem;letter-spacing:0.1em;color:var(--text3);text-transform:uppercase;margin-bottom:0.5rem}
+.hrb-value{font-family:var(--ff-display);font-size:2rem;font-weight:600;color:var(--white)}
+.hrb-value small{font-size:1rem;color:var(--text2);font-weight:300}
+.hrb-trend{font-size:0.75rem;color:var(--teal);margin-top:0.2rem}
+
+/* ── MARQUEE ── */
+.marquee-wrap{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;background:var(--bg2)}
+.marquee-inner{
+  display:inline-flex;gap:0;white-space:nowrap;
+  animation:marquee 35s linear infinite;
+}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-item{
+  display:inline-flex;align-items:center;gap:1.5rem;
+  padding:1rem 2rem;
+  border-right:1px solid var(--line);
+  font-family:var(--ff-mono);font-size:0.7rem;
+  letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);
+}
+.marquee-item .mi-icon{color:var(--gold);font-size:0.8rem}
+
+/* ── SECTION BASE ── */
+.section{padding:8rem 4vw;position:relative}
+.section-tag{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  font-family:var(--ff-mono);font-size:0.65rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--fire);
+  margin-bottom:1.5rem;
+}
+.section-tag::before{content:'';width:30px;height:1px;background:var(--fire);flex-shrink:0}
+.section-h{
+  font-family:var(--ff-display);
+  font-size:clamp(3rem,6vw,6rem);
+  font-weight:300;line-height:0.92;
+  color:var(--white);
+  margin-bottom:1.5rem;
+}
+.section-h em{font-style:italic;color:var(--gold2)}
+.section-h strong{font-weight:600;color:var(--fire)}
+.section-p{font-size:0.9rem;color:var(--text2);max-width:500px;line-height:1.8;margin-bottom:3rem}
+
+/* ── ABOUT / INTRO ── */
+.about{background:var(--bg)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line)}
+.about-left{
+  padding:4rem;border-right:1px solid var(--line);
+}
+.about-right{
+  display:grid;grid-template-rows:1fr 1fr;
+}
+.about-stat-block{
+  padding:3rem;border-bottom:1px solid var(--line);
+  display:flex;flex-direction:column;justify-content:center;
+}
+.about-stat-block:last-child{border-bottom:none}
+.asb-number{
+  font-family:var(--ff-display);font-size:5rem;font-weight:300;
+  line-height:1;color:var(--white);margin-bottom:0.5rem;
+}
+.asb-number em{font-style:italic;color:var(--fire)}
+.asb-text{font-size:0.85rem;color:var(--text2);line-height:1.7;max-width:280px}
+.about-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:2rem}
+.about-tag{
+  font-family:var(--ff-mono);font-size:0.65rem;letter-spacing:0.08em;
+  text-transform:uppercase;
+  border:1px solid var(--line2);color:var(--text3);
+  padding:0.3rem 0.7rem;border-radius:2px;
+  transition:all .2s;
+}
+.about-tag:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── SERVICES ── */
+.services-section{background:var(--bg2)}
+.svc-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  border:1px solid var(--line);
+}
+.svc-item{
+  padding:3rem;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  position:relative;
+  overflow:hidden;
+  transition:background .3s;
+  cursor:none;
+}
+.svc-item:nth-child(2n){border-right:none}
+.svc-item:nth-child(n+5){border-bottom:none}
+.svc-item::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,77,28,0.06) 0%,transparent 60%);
+  opacity:0;transition:opacity .3s;
+}
+.svc-item:hover::before{opacity:1}
+.svc-num{
+  font-family:var(--ff-display);font-size:4rem;font-weight:300;
+  color:var(--line2);line-height:1;
+  margin-bottom:1.5rem;transition:color .3s;
+  font-style:italic;
+}
+.svc-item:hover .svc-num{color:rgba(255,77,28,0.2)}
+.svc-title{font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:0.75rem;letter-spacing:0.02em}
+.svc-desc{font-size:0.85rem;color:var(--text2);line-height:1.75;margin-bottom:1.5rem}
+.svc-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+.svc-tag-item{
+  font-family:var(--ff-mono);font-size:0.6rem;letter-spacing:0.08em;
+  background:rgba(255,255,255,0.04);color:var(--text3);
+  padding:0.2rem 0.5rem;border-radius:2px;
+  border:1px solid var(--line);
+}
+.svc-arrow{
+  position:absolute;top:2.5rem;right:2.5rem;
+  font-size:1.2rem;color:var(--text3);
+  transition:all .3s;transform:rotate(45deg);
+}
+.svc-item:hover .svc-arrow{color:var(--fire);transform:rotate(0deg)}
+
+/* ── NUMBERS HIGHLIGHT ── */
+.numbers-band{
+  background:var(--fire);
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid rgba(255,255,255,0.1);
+}
+.nb-cell{
+  padding:3rem 2rem;
+  border-right:1px solid rgba(255,255,255,0.15);
+  text-align:center;
+}
+.nb-cell:last-child{border-right:none}
+.nb-num{
+  font-family:var(--ff-display);font-size:4rem;font-weight:300;
+  color:var(--white);line-height:1;margin-bottom:0.5rem;
+}
+.nb-label{font-size:0.78rem;color:rgba(255,255,255,0.7);letter-spacing:0.05em}
+
+/* ── PROCESS ── */
+.process-section{background:var(--bg)}
+.process-header{
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;
+  margin-bottom:4rem;align-items:end;
+}
+.process-steps-grid{display:grid;grid-template-columns:1fr;gap:0;border:1px solid var(--line)}
+.p-step{
+  display:grid;grid-template-columns:80px 1fr 1fr;
+  border-bottom:1px solid var(--line);
+  transition:background .2s;
+}
+.p-step:last-child{border-bottom:none}
+.p-step:hover{background:var(--bg2)}
+.p-step-num{
+  display:flex;align-items:center;justify-content:center;
+  border-right:1px solid var(--line);
+  font-family:var(--ff-display);font-size:2.5rem;font-weight:300;
+  font-style:italic;color:var(--text3);
+  padding:2.5rem 0;
+}
+.p-step-main{
+  padding:2.5rem 2rem;
+  border-right:1px solid var(--line);
+}
+.p-step-title{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:0.5rem}
+.p-step-desc{font-size:0.83rem;color:var(--text2);line-height:1.7}
+.p-step-detail{
+  padding:2.5rem 2rem;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.p-step-time{
+  font-family:var(--ff-mono);font-size:0.65rem;letter-spacing:0.1em;
+  color:var(--text3);text-transform:uppercase;margin-bottom:0.4rem;
+}
+.p-step-result{
+  font-family:var(--ff-display);font-size:1.3rem;font-style:italic;
+  color:var(--teal);
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials-section{background:var(--bg2)}
+.testi-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line)}
+.testi-left{padding:4rem;border-right:1px solid var(--line)}
+.testi-right{display:grid;grid-template-rows:1fr 1fr 1fr}
+.testi-card{
+  padding:2rem;border-bottom:1px solid var(--line);
+  transition:background .2s;
+  cursor:none;
+}
+.testi-card:last-child{border-bottom:none}
+.testi-card:hover{background:var(--bg3)}
+.testi-stars{color:var(--gold);font-size:0.75rem;letter-spacing:0.1em;margin-bottom:0.75rem}
+.testi-quote{
+  font-family:var(--ff-display);font-size:1.05rem;font-style:italic;
+  color:var(--text);line-height:1.65;margin-bottom:1rem;font-weight:300;
+}
+.testi-meta{display:flex;align-items:center;gap:0.75rem}
+.testi-av{
+  width:32px;height:32px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.65rem;font-weight:700;color:var(--bg);
+}
+.av-fire{background:var(--fire)}
+.av-teal{background:var(--teal)}
+.av-gold{background:var(--gold)}
+.testi-name{font-size:0.8rem;font-weight:600;color:var(--white)}
+.testi-role{font-family:var(--ff-mono);font-size:0.65rem;color:var(--text3)}
+
+/* large testimonial */
+.testi-featured{
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.testi-featured .tq{
+  font-family:var(--ff-display);font-size:1.8rem;font-style:italic;
+  font-weight:300;color:var(--white);line-height:1.4;margin-bottom:2rem;
+}
+.testi-featured .tq span{color:var(--gold2)}
+.tf-result{
+  display:inline-flex;align-items:center;gap:0.75rem;
+  background:rgba(0,212,170,0.1);border:1px solid rgba(0,212,170,0.2);
+  padding:0.75rem 1rem;border-radius:4px;margin-bottom:2rem;
+}
+.tf-result-num{
+  font-family:var(--ff-display);font-size:2rem;font-weight:600;color:var(--teal);
+}
+.tf-result-label{font-size:0.78rem;color:var(--text2)}
+
+/* ── FAQ ── */
+.faq-section{background:var(--bg)}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.faq-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line);overflow:hidden}
+.faq-item:last-child{border-bottom:none}
+.faq-q{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.5rem;cursor:none;
+  font-size:0.9rem;font-weight:600;color:var(--text);
+  gap:1rem;transition:color .2s;
+}
+.faq-q:hover{color:var(--white)}
+.faq-icon{
+  width:24px;height:24px;border-radius:50%;
+  border:1px solid var(--line2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.9rem;color:var(--text3);flex-shrink:0;
+  transition:all .3s;
+}
+.faq-item.open .faq-icon{background:var(--fire);border-color:var(--fire);color:var(--white);transform:rotate(45deg)}
+.faq-a{
+  max-height:0;overflow:hidden;
+  font-size:0.85rem;color:var(--text2);line-height:1.75;
+  transition:max-height .35s ease,padding .35s;
+}
+.faq-item.open .faq-a{max-height:200px;padding:0 1.5rem 1.5rem}
+
+/* Pricing preview */
+.pricing-preview{display:flex;flex-direction:column;gap:1rem}
+.price-card{
+  border:1px solid var(--line2);border-radius:4px;
+  padding:1.75rem;transition:border-color .2s,background .2s;
+  position:relative;
+}
+.price-card:hover{border-color:rgba(255,77,28,0.4);background:var(--bg2)}
+.price-card.featured{border-color:var(--fire);background:rgba(255,77,28,0.05)}
+.price-badge{
+  position:absolute;top:-10px;left:1.5rem;
+  font-family:var(--ff-mono);font-size:0.6rem;letter-spacing:0.1em;
+  background:var(--fire);color:var(--white);
+  padding:0.2rem 0.6rem;border-radius:2px;text-transform:uppercase;
+}
+.price-name{font-size:0.85rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:0.08em}
+.price-amount{
+  font-family:var(--ff-display);font-size:2rem;font-weight:600;
+  color:var(--white);line-height:1;margin-bottom:0.4rem;
+}
+.price-amount small{font-size:0.9rem;font-weight:300;color:var(--text2)}
+.price-features{
+  display:flex;flex-direction:column;gap:0.35rem;margin-top:0.75rem;
+}
+.pf{font-size:0.78rem;color:var(--text2);display:flex;align-items:center;gap:0.5rem}
+.pf::before{content:'✓';color:var(--teal);font-size:0.7rem;flex-shrink:0}
+
+/* ── CTA FINAL ── */
+.cta-final{
+  background:var(--bg2);
+  position:relative;overflow:hidden;
+  padding:10rem 4vw;
+  text-align:center;
+  border-top:1px solid var(--line);
+}
+.cta-final::before{
+  content:'';position:absolute;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  width:700px;height:700px;
+  background:radial-gradient(circle,rgba(255,77,28,0.1) 0%,transparent 65%);
+  pointer-events:none;
+}
+.cta-grid-bg{
+  position:absolute;inset:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+}
+.cta-big{
+  font-family:var(--ff-display);
+  font-size:clamp(4rem,9vw,10rem);
+  font-weight:300;line-height:0.88;
+  color:var(--white);
+  position:relative;z-index:1;
+  margin-bottom:1.5rem;
+}
+.cta-big em{font-style:italic;color:var(--fire)}
+.cta-big strong{font-weight:600}
+.cta-sub{font-size:0.9rem;color:var(--text2);margin-bottom:3rem;position:relative;z-index:1}
+.cta-form{
+  display:flex;gap:0;max-width:520px;margin:0 auto;
+  position:relative;z-index:1;
+  border:1px solid var(--line2);border-radius:4px;overflow:hidden;
+}
+.cta-form input{
+  flex:1;padding:1rem 1.25rem;
+  background:transparent;border:none;outline:none;
+  font-family:var(--ff-sans);font-size:0.9rem;color:var(--white);
+}
+.cta-form input::placeholder{color:var(--text3)}
+.cta-form button{
+  background:var(--fire);color:var(--white);
+  border:none;padding:1rem 2rem;cursor:none;
+  font-family:var(--ff-sans);font-weight:700;
+  font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;
+  white-space:nowrap;transition:background .2s;
+}
+.cta-form button:hover{background:var(--fire2)}
+.cta-note{
+  font-family:var(--ff-mono);font-size:0.65rem;letter-spacing:0.08em;
+  color:var(--text3);margin-top:1rem;position:relative;z-index:1;
+}
+.cta-socials{
+  display:flex;align-items:center;justify-content:center;gap:1.5rem;
+  margin-top:3rem;position:relative;z-index:1;
+  flex-wrap:wrap;
+}
+.cta-socials a{
+  font-family:var(--ff-mono);font-size:0.65rem;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--text3);text-decoration:none;
+  border:1px solid var(--line);padding:0.5rem 1rem;border-radius:2px;
+  transition:all .2s;
+}
+.cta-socials a:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--bg);
+  border-top:1px solid var(--line);
+  padding:3rem 4vw;
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:2rem;align-items:center;
+}
+.footer-logo-area{}
+.footer-logo{
+  font-family:var(--ff-sans);font-weight:800;font-size:1.1rem;
+  letter-spacing:0.12em;text-transform:uppercase;color:var(--white);
+  margin-bottom:0.4rem;display:flex;align-items:center;gap:0.5rem;
+}
+.footer-logo-dot{width:7px;height:7px;background:var(--fire);border-radius:50%}
+.footer-sub{font-family:var(--ff-mono);font-size:0.65rem;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase}
+.footer-links{display:flex;flex-direction:column;gap:0.5rem}
+.footer-links a{font-size:0.8rem;color:var(--text3);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--white)}
+.footer-right{text-align:right}
+.footer-copy{font-family:var(--ff-mono);font-size:0.65rem;color:var(--text3);letter-spacing:0.08em}
+
+/* ── ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .about-grid{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:1fr}
+  .svc-item:nth-child(2n){border-right:1px solid var(--line)}
+  .numbers-band{grid-template-columns:repeat(2,1fr)}
+  .testi-layout{grid-template-columns:1fr}
+  .faq-grid{grid-template-columns:1fr}
+  .process-header{grid-template-columns:1fr;gap:2rem}
+  .p-step{grid-template-columns:60px 1fr}
+  .p-step-detail{display:none}
+  footer{grid-template-columns:1fr;text-align:left}
+  .footer-right{text-align:left}
+  .nav-center{display:none}
+}
+@media(max-width:600px){
+  .hero-left{padding:60px 5vw 60px}
+  .cta-form{flex-direction:column;border-radius:0;border:none;gap:0.5rem}
+  .cta-form input,.cta-form button{border:1px solid var(--line2);border-radius:4px;width:100%}
+}
+
+/* ── NAV LOGO IMAGE ── */
+.logo-img{height:42px;width:auto;object-fit:contain;mix-blend-mode:screen;display:block}
+.logo-tagline{font-family:var(--ff-mono);font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text3);margin-top:0.1rem;display:block}
+
+/* ── PLAN CARDS ── */
+.plans-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.plan-card{border:1.5px solid var(--line2);border-radius:6px;overflow:hidden;transition:transform .2s}
+.plan-card:hover{transform:translateY(-3px)}
+.plan-card.plan-featured{border-color:#f97316;box-shadow:0 12px 40px rgba(249,115,22,0.18)}
+.plan-header{padding:1.1rem 1.5rem;text-align:center}
+.plan-title{font-family:var(--ff-sans);font-size:0.78rem;font-weight:800;color:var(--white);letter-spacing:0.18em;text-transform:uppercase}
+.plan-features-list{padding:1.25rem 1.5rem;background:var(--bg2);display:flex;flex-direction:column;gap:0.65rem}
+.plan-feat{display:flex;align-items:flex-start;gap:0.65rem;font-size:0.8rem;color:var(--text2);line-height:1.4}
+.plan-check{width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.55rem;font-weight:800;color:var(--bg);margin-top:0.1rem}
+.plan-feat strong{font-weight:700;margin-left:0.2rem}
+.plan-actions{padding:1rem 1.5rem 1.5rem;background:var(--bg2);display:flex;flex-direction:column;gap:0.6rem}
+.plan-btn-call{display:flex;align-items:center;justify-content:center;gap:0.45rem;padding:0.75rem;border-radius:4px;font-family:var(--ff-sans);font-weight:700;font-size:0.75rem;text-decoration:none;color:var(--white);transition:opacity .2s;letter-spacing:0.05em;text-transform:uppercase}
+.plan-btn-call:hover{opacity:0.85}
+.plan-btn-wa{display:flex;align-items:center;justify-content:center;gap:0.45rem;padding:0.75rem;border-radius:4px;font-family:var(--ff-sans);font-weight:700;font-size:0.75rem;text-decoration:none;border:1.5px solid #25d366;color:#25d366;transition:background .2s;letter-spacing:0.05em;text-transform:uppercase}
+.plan-btn-wa:hover{background:rgba(37,211,102,0.1)}
+@media(max-width:600px){.plans-grid{grid-template-columns:1fr}}
+
+/* ── FOOTER EXTENDED ── */
+footer{grid-template-columns:1fr 1fr 1fr;align-items:start}
+.footer-contact{display:flex;flex-direction:column;gap:0.4rem;margin-top:0.75rem}
+.footer-contact-item{display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;color:var(--text3);text-decoration:none;transition:color .2s}
+.footer-contact-item:hover{color:var(--text)}
+.footer-contact-icon{font-size:0.75rem;color:var(--gold);flex-shrink:0}
+.footer-logo-img{height:38px;width:auto;object-fit:contain;mix-blend-mode:screen;margin-bottom:0.25rem}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor">
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo" style="text-decoration:none;flex-direction:column;align-items:flex-start;gap:0">
+    <img src="src/assets/logo.png" alt="Aleut Technologies" class="logo-img" />
+    <span class="logo-tagline">Partners in Innovations</span>
+  </a>
+  <ul class="nav-center">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-badge">Bhopal, MP</span>
+    <a href="#cta" class="btn-nav">Free Audit →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+
+  <div class="hero-left">
+    <h1 class="hero-h1">
+      Rank<br>
+      <em>Higher.</em><br>
+      <strong>Convert</strong>
+    </h1>
+    <p class="hero-h1-sub">More. Faster.</p>
+    <p class="hero-desc">We help Bhopal businesses dominate Google search and turn organic traffic into measurable revenue. No fluff — just results backed by data.</p>
+    <div class="hero-actions">
+      <a href="#cta" class="btn-primary">Get Free SEO Audit <span>↗</span></a>
+      <a href="#process" class="btn-outline">See our process</a>
+    </div>
+    <div class="hero-metrics">
+      <div class="hero-metric">
+        <div class="hm-num">150<span>+</span></div>
+        <div class="hm-label">Clients Ranked</div>
+      </div>
+      <div class="hero-metric">
+        <div class="hm-num">6.8<span>×</span></div>
+        <div class="hm-label">Avg. ROI</div>
+      </div>
+      <div class="hero-metric">
+        <div class="hm-num">90<span>d</span></div>
+        <div class="hm-label">To Page One</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-right-top">
+      <div class="rank-widget">
+        <div class="rw-header">
+          <span class="rw-title">Live Rankings · Bhopal</span>
+          <span class="rw-live"><span class="live-dot"></span> Updating</span>
+        </div>
+        <div class="rw-body">
+          <div class="kw-row">
+            <span class="kw-pos pos-gold">#1</span>
+            <span class="kw-name">SEO agency Bhopal</span>
+            <span class="kw-change ch-up">↑ 12</span>
+          </div>
+          <div class="kw-row">
+            <span class="kw-pos pos-gold">#1</span>
+            <span class="kw-name">digital marketing MP Nagar</span>
+            <span class="kw-change ch-up">↑ 8</span>
+          </div>
+          <div class="kw-row">
+            <span class="kw-pos pos-silver">#2</span>
+            <span class="kw-name">best restaurant Bhopal</span>
+            <span class="kw-change ch-up">↑ 5</span>
+          </div>
+          <div class="kw-row">
+            <span class="kw-pos pos-bronze">#3</span>
+            <span class="kw-name">property dealer Arera Colony</span>
+            <span class="kw-change ch-new">NEW</span>
+          </div>
+          <div class="kw-row">
+            <span class="kw-pos pos-gray">#14</span>
+            <span class="kw-name" style="color:var(--fire2)">your business → ?</span>
+            <span class="kw-change ch-same">—</span>
+          </div>
+        </div>
+        <div class="rw-footer">
+          <span>Updated 2 min ago</span>
+          <strong>↑ Rankings improving</strong>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right-bottom">
+      <div class="hrb-cell">
+        <div class="hrb-label">Avg. Traffic Increase</div>
+        <div class="hrb-value">+312<small>%</small></div>
+        <div class="hrb-trend">↑ in first 90 days</div>
+      </div>
+      <div class="hrb-cell" style="border-left:1px solid var(--line)">
+        <div class="hrb-label">Retention Rate</div>
+        <div class="hrb-value">98<small>%</small></div>
+        <div class="hrb-trend" style="color:var(--gold)">clients stay long-term</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-inner">
+    <span class="marquee-item"><span class="mi-icon">◆</span> Local SEO</span>
+    <span class="marquee-item"><span class="mi-icon">◆</span> Technical Audit</span>
+    <span class="marquee-item"><span class="mi-icon">◆</span> Content Strategy</span>
+    <span class="marquee-item"><span class="mi-icon">◆</span> Link Acquisition</span>
+    <span class="marquee-item"><span class="mi-icon">◆</span> Google My Business</span>
+    <span class="marquee-item"><span class="mi-icon">◆</span> Core Web Vitals</span>
+    <span class="marquee-item"><span class="mi-icon">◆</span> E-Commerce SEO</span>
+    <span class="marquee-item"><span class="mi-icon">◆</span> Keyword Research</span>
+    <span class="marquee-item"><span class="mi-icon">◆</span> Schema Markup</span>
+    <span class="marquee-item"><span class="mi-icon">◆</span> Competitor Analysis</span>
+    <span class="marquee-item"><span class="mi-icon">◆</span> Local SEO</span>
+    <span class="marquee-item"><span class="mi-icon">◆</span> Technical Audit</span>
+    <span class="marquee-item"><span class="mi-icon">◆</span> Content Strategy</span>
+    <span class="marquee-item"><span class="mi-icon">◆</span> Link Acquisition</span>
+    <span class="marquee-item"><span class="mi-icon">◆</span> Google My Business</span>
+    <span class="marquee-item"><span class="mi-icon">◆</span> Core Web Vitals</span>
+    <span class="marquee-item"><span class="mi-icon">◆</span> E-Commerce SEO</span>
+    <span class="marquee-item"><span class="mi-icon">◆</span> Keyword Research</span>
+    <span class="marquee-item"><span class="mi-icon">◆</span> Schema Markup</span>
+    <span class="marquee-item"><span class="mi-icon">◆</span> Competitor Analysis</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about section reveal" id="about">
+  <div class="section-tag">Who We Are</div>
+  <div class="about-grid reveal">
+    <div class="about-left">
+      <h2 class="section-h">Bhopal's most<br>results-driven<br><em>SEO team.</em></h2>
+      <p class="section-p">Founded in Bhopal in 2018, Apex SEO has helped over 150 local businesses — from MP Nagar clinics to Kolar Road restaurants to New Market retailers — climb to Google's first page and stay there.</p>
+      <p style="font-size:0.85rem;color:var(--text2);line-height:1.8;margin-bottom:2rem">We don't do cookie-cutter strategies. Every campaign is built around your specific market, your specific competitors in Madhya Pradesh, and your specific revenue goals. We measure success in rupees, not just rankings.</p>
+      <div class="about-tags">
+        <span class="about-tag">MP Nagar</span>
+        <span class="about-tag">Arera Colony</span>
+        <span class="about-tag">Kolar Road</span>
+        <span class="about-tag">New Market</span>
+        <span class="about-tag">Shyamla Hills</span>
+        <span class="about-tag">Habibganj</span>
+        <span class="about-tag">All of MP</span>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="about-stat-block">
+        <div class="asb-number">150<em>+</em></div>
+        <p class="asb-text">Bhopal businesses ranking on Google's first page, across 40+ industries from healthcare to hospitality.</p>
+      </div>
+      <div class="about-stat-block">
+        <div class="asb-number" style="color:var(--fire)">₹0</div>
+        <p class="asb-text">In hidden charges. Ever. Transparent monthly reports, real metrics, clear pricing. No surprises on your invoice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section section reveal" id="services">
+  <div class="section-tag">What We Do</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:3rem">
+    <h2 class="section-h">Six ways we<br>grow your<br><em>rankings.</em></h2>
+    <p class="section-p" style="margin-bottom:0;align-self:end">Every service is designed around one goal: bringing customers who are ready to buy to your Bhopal business through Google search.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-item">
+      <div class="svc-num">01</div>
+      <div class="svc-arrow">↗</div>
+      <h3 class="svc-title">Local SEO Bhopal</h3>
+      <p class="svc-desc">Hyperlocal strategies built for Bhopal's market. Dominate "near me" searches, Google Maps, and neighbourhood-specific queries across MP Nagar, Arera Colony, and beyond.</p>
+      <div class="svc-tags">
+        <span class="svc-tag-item">Google Maps</span>
+        <span class="svc-tag-item">Local Citations</span>
+        <span class="svc-tag-item">NAP Consistency</span>
+        <span class="svc-tag-item">Near Me Queries</span>
+      </div>
+    </div>
+    <div class="svc-item">
+      <div class="svc-num">02</div>
+      <div class="svc-arrow">↗</div>
+      <h3 class="svc-title">Technical SEO</h3>
+      <p class="svc-desc">Deep technical audits covering crawlability, Core Web Vitals, site architecture, structured data, and mobile performance. Fix what's holding your rankings hostage.</p>
+      <div class="svc-tags">
+        <span class="svc-tag-item">Core Web Vitals</span>
+        <span class="svc-tag-item">Schema Markup</span>
+        <span class="svc-tag-item">Crawl Optimisation</span>
+        <span class="svc-tag-item">Mobile-First</span>
+      </div>
+    </div>
+    <div class="svc-item">
+      <div class="svc-num">03</div>
+      <div class="svc-arrow">↗</div>
+      <h3 class="svc-title">Content Marketing</h3>
+      <p class="svc-desc">Keyword-driven content that ranks and converts. Blog posts, service pages, and landing pages written for both Google's algorithm and Bhopal's buying audience.</p>
+      <div class="svc-tags">
+        <span class="svc-tag-item">Keyword Mapping</span>
+        <span class="svc-tag-item">Hindi + English</span>
+        <span class="svc-tag-item">Topical Authority</span>
+        <span class="svc-tag-item">Content Calendar</span>
+      </div>
+    </div>
+    <div class="svc-item">
+      <div class="svc-num">04</div>
+      <div class="svc-arrow">↗</div>
+      <h3 class="svc-title">Link Acquisition</h3>
+      <p class="svc-desc">High-authority backlinks from Indian news portals, regional directories, and industry-specific publications that build your domain rating and sustain first-page rankings.</p>
+      <div class="svc-tags">
+        <span class="svc-tag-item">Indian News Sites</span>
+        <span class="svc-tag-item">DA 50+ Links</span>
+        <span class="svc-tag-item">Niche Outreach</span>
+        <span class="svc-tag-item">Digital PR</span>
+      </div>
+    </div>
+    <div class="svc-item" style="border-bottom:none">
+      <div class="svc-num">05</div>
+      <div class="svc-arrow">↗</div>
+      <h3 class="svc-title">Google My Business</h3>
+      <p class="svc-desc">Fully optimised GMB profiles, review acquisition systems, Q&amp;A management, and post strategies to lock in the coveted local 3-pack for Bhopal searches.</p>
+      <div class="svc-tags">
+        <span class="svc-tag-item">3-Pack Targeting</span>
+        <span class="svc-tag-item">Review Strategy</span>
+        <span class="svc-tag-item">GMB Posts</span>
+        <span class="svc-tag-item">Photo Optimisation</span>
+      </div>
+    </div>
+    <div class="svc-item" style="border-bottom:none">
+      <div class="svc-num">06</div>
+      <div class="svc-arrow">↗</div>
+      <h3 class="svc-title">E-Commerce SEO</h3>
+      <p class="svc-desc">Revenue-focused SEO for online stores — product page optimisation, category architecture, faceted navigation fixes, and shopping schema to drive purchase-intent traffic.</p>
+      <div class="svc-tags">
+        <span class="svc-tag-item">Product Schema</span>
+        <span class="svc-tag-item">Category SEO</span>
+        <span class="svc-tag-item">Shopping Feed</span>
+        <span class="svc-tag-item">Conversion CRO</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS BAND -->
+<div class="numbers-band reveal">
+  <div class="nb-cell">
+    <div class="nb-num">150+</div>
+    <div class="nb-label">Bhopal businesses ranked on page 1</div>
+  </div>
+  <div class="nb-cell">
+    <div class="nb-num">6.8×</div>
+    <div class="nb-label">Average return on investment</div>
+  </div>
+  <div class="nb-cell">
+    <div class="nb-num">312%</div>
+    <div class="nb-label">Average traffic increase in 90 days</div>
+  </div>
+  <div class="nb-cell">
+    <div class="nb-num">98%</div>
+    <div class="nb-label">Client retention after year one</div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<section class="process-section section reveal" id="process">
+  <div class="process-header">
+    <div>
+      <div class="section-tag">How It Works</div>
+      <h2 class="section-h">From zero<br>to page <em>one.</em></h2>
+    </div>
+    <p class="section-p" style="margin-bottom:0">A proven four-step system refined over 150+ Bhopal campaigns. Clear milestones, measurable outcomes, no guesswork.</p>
+  </div>
+  <div class="process-steps-grid">
+    <div class="p-step">
+      <div class="p-step-num">01</div>
+      <div class="p-step-main">
+        <h4 class="p-step-title">Free SEO Audit & Competitor Analysis</h4>
+        <p class="p-step-desc">We analyse your current site health, existing rankings, backlink profile, and map out every competitor ranking in Bhopal for your target keywords. You get a detailed report — free.</p>
+      </div>
+      <div class="p-step-detail">
+        <div class="p-step-time">Timeline</div>
+        <div class="p-step-result">48 hours</div>
+      </div>
+    </div>
+    <div class="p-step">
+      <div class="p-step-num">02</div>
+      <div class="p-step-main">
+        <h4 class="p-step-title">Custom Strategy & 12-Month Roadmap</h4>
+        <p class="p-step-desc">Based on the audit, we build a custom roadmap with priority keywords, content plan, technical fixes, and projected traffic and revenue milestones at 30, 60, and 90 days.</p>
+      </div>
+      <div class="p-step-detail">
+        <div class="p-step-time">Timeline</div>
+        <div class="p-step-result">Week 1</div>
+      </div>
+    </div>
+    <div class="p-step">
+      <div class="p-step-num">03</div>
+      <div class="p-step-main">
+        <h4 class="p-step-title">Execution: Technical + Content + Links</h4>
+        <p class="p-step-desc">Our team implements fixes, publishes optimised content, and builds authoritative links month over month. You focus on your business — we handle Google.</p>
+      </div>
+      <div class="p-step-detail">
+        <div class="p-step-time">First Results</div>
+        <div class="p-step-result">Day 30–90</div>
+      </div>
+    </div>
+    <div class="p-step" style="border-bottom:none">
+      <div class="p-step-num">04</div>
+      <div class="p-step-main">
+        <h4 class="p-step-title">Monthly Reports + Strategy Iteration</h4>
+        <p class="p-step-desc">Live ranking dashboard, monthly video reports, and a strategy call to review performance, adjust to algorithm updates, and scale what's working.</p>
+      </div>
+      <div class="p-step-detail">
+        <div class="p-step-time">Cadence</div>
+        <div class="p-step-result">Every month</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section section reveal" id="results">
+  <div class="section-tag">Client Stories</div>
+  <h2 class="section-h" style="margin-bottom:3rem">Real Bhopal<br>businesses.<br><em>Real results.</em></h2>
+  <div class="testi-layout">
+    <div class="testi-left testi-featured">
+      <div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="tq">"Our restaurant in MP Nagar went from invisible on Google to <span>#1 for 'best restaurant Bhopal'</span> in just 4 months. Walk-ins increased 60% and online orders tripled."</p>
+        <div class="tf-result">
+          <div class="tf-result-num">+420%</div>
+          <div class="tf-result-label">Organic traffic<br>increase in 6 months</div>
+        </div>
+      </div>
+      <div class="testi-meta" style="margin-top:auto">
+        <div class="testi-av av-fire">RK</div>
+        <div>
+          <div class="testi-name">Rahul Khanna</div>
+          <div class="testi-role">Spice Garden Restaurant · MP Nagar, Bhopal</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-right">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Shifted from Google Ads to organic SEO. Now we get 3× more leads at a fraction of the cost. The ROI is extraordinary."</p>
+        <div class="testi-meta">
+          <div class="testi-av av-teal">SP</div>
+          <div>
+            <div class="testi-name">Sunita Patel</div>
+            <div class="testi-role">Patel Legal Associates · Bhopal</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Our clinic appears in Google's local 3-pack for every major health keyword in Bhopal. New patient inquiries doubled in 90 days."</p>
+        <div class="testi-meta">
+          <div class="testi-av av-gold">AJ</div>
+          <div>
+            <div class="testi-name">Dr. Amit Joshi</div>
+            <div class="testi-role">CareFirst Clinic · Arera Colony</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Our property listings now rank above national portals for Bhopal-specific searches. Inquiries are up 180% with zero ad spend."</p>
+        <div class="testi-meta">
+          <div class="testi-av av-fire" style="background:var(--gold)">MV</div>
+          <div>
+            <div class="testi-name">Manju Verma</div>
+            <div class="testi-role">Verma Properties · New Market, Bhopal</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ + PRICING -->
+<section class="faq-section section reveal" id="pricing">
+  <div class="section-tag">FAQ & Pricing</div>
+  <h2 class="section-h" style="margin-bottom:3rem">Questions &<br><em>answers.</em></h2>
+  <div class="faq-grid">
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q">How long before I see results?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Most clients see measurable ranking improvements within 30–60 days. Significant traffic increases typically happen between 60–90 days. Full potential is usually achieved at the 6-month mark, with continuous growth beyond.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you work with all types of businesses?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Yes — we work with restaurants, clinics, law firms, real estate agencies, e-commerce stores, and service businesses across Bhopal and Madhya Pradesh. We have case studies for 40+ industries.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I'm not seeing results?<span class="faq-icon">+</span></div>
+        <div class="faq-a">We have a transparent reporting system and monthly strategy calls. If projections aren't being met, we escalate our efforts at no extra cost. We're month-to-month after 3 months — you're never trapped.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you guarantee first page rankings?<span class="faq-icon">+</span></div>
+        <div class="faq-a">No ethical SEO agency can guarantee specific rankings — Google controls that. What we guarantee is: transparent reporting, consistent work, and strategies based on proven data from 150+ Bhopal campaigns.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can you handle both Hindi and English SEO?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Absolutely. Many Bhopal searches happen in Hindi. We optimise for both Hindi and English keywords to maximise your reach across the full local search audience.</div>
+      </div>
+    </div>
+
+    <div class="plans-grid">
+
+      <!-- VISIBILITY PLAN -->
+      <div class="plan-card">
+        <div class="plan-header" style="background:#7C3AED">
+          <div class="plan-title">Visibility Plan</div>
+        </div>
+        <div class="plan-features-list">
+          <div class="plan-feat"><span class="plan-check" style="background:#7C3AED">✓</span>Improved Rankings On Google Maps</div>
+          <div class="plan-feat"><span class="plan-check" style="background:#7C3AED">✓</span>Rank On: <strong style="color:#A78BFA">2–3 Keywords</strong></div>
+          <div class="plan-feat"><span class="plan-check" style="background:#7C3AED">✓</span>Google Posts Monthly: <strong style="color:#A78BFA">15</strong></div>
+          <div class="plan-feat"><span class="plan-check" style="background:#7C3AED">✓</span>Results In: <strong style="color:#A78BFA">3 Months</strong></div>
+          <div class="plan-feat"><span class="plan-check" style="background:#7C3AED">✓</span>GMB SEO Report: <strong style="color:#A78BFA">Monthly 1</strong></div>
+          <div class="plan-feat"><span class="plan-check" style="background:#7C3AED">✓</span>Backlink Follow: <strong style="color:#A78BFA">15–20</strong></div>
+          <div class="plan-feat"><span class="plan-check" style="background:#7C3AED">✓</span>Local SEO Audit</div>
+          <div class="plan-feat"><span class="plan-check" style="background:#7C3AED">✓</span>Competitors Analysis</div>
+        </div>
+        <div class="plan-actions">
+          <a href="tel:8770161193" class="plan-btn-call" style="background:#7C3AED">📞 Call Now</a>
+          <a href="https://wa.me/918770161193" target="_blank" rel="noopener noreferrer" class="plan-btn-wa">💬 WhatsApp Now</a>
+        </div>
+      </div>
+
+      <!-- DOMINANCE PLAN -->
+      <div class="plan-card plan-featured">
+        <div class="plan-header" style="background:#f97316">
+          <div class="plan-title">Dominance Plan</div>
+        </div>
+        <div class="plan-features-list">
+          <div class="plan-feat"><span class="plan-check" style="background:#f97316">✓</span>Improved Rankings On Google Maps</div>
+          <div class="plan-feat"><span class="plan-check" style="background:#f97316">✓</span>Rank On: <strong style="color:var(--fire2)">4–5 Keywords</strong></div>
+          <div class="plan-feat"><span class="plan-check" style="background:#f97316">✓</span>Google Posts Monthly: <strong style="color:var(--fire2)">30</strong></div>
+          <div class="plan-feat"><span class="plan-check" style="background:#f97316">✓</span>Results In: <strong style="color:var(--fire2)">3 Months</strong></div>
+          <div class="plan-feat"><span class="plan-check" style="background:#f97316">✓</span>GMB SEO Report: <strong style="color:var(--fire2)">1 Monthly</strong></div>
+          <div class="plan-feat"><span class="plan-check" style="background:#f97316">✓</span>Backlink Follow: <strong style="color:var(--fire2)">25–30</strong></div>
+          <div class="plan-feat"><span class="plan-check" style="background:#f97316">✓</span>Local SEO Audit</div>
+          <div class="plan-feat"><span class="plan-check" style="background:#f97316">✓</span>Competitors Analysis</div>
+        </div>
+        <div class="plan-actions">
+          <a href="tel:8770161193" class="plan-btn-call" style="background:#f97316">📞 Call Now</a>
+          <a href="https://wa.me/918770161193" target="_blank" rel="noopener noreferrer" class="plan-btn-wa">💬 WhatsApp Now</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final reveal" id="cta">
+  <div class="cta-grid-bg"></div>
+  <h2 class="cta-big">
+    Start<br>
+    <em>Ranking</em><br>
+    <strong>Today.</strong>
+  </h2>
+  <p class="cta-sub">Get your free SEO audit — we'll show exactly why competitors outrank you and how to fix it.</p>
+  <div class="cta-form">
+    <input type="text" placeholder="Your website URL or WhatsApp number" />
+    <button type="button">Get Free Audit →</button>
+  </div>
+  <p class="cta-note">Free · No commitment · Report delivered in 48 hours</p>
+  <div class="cta-socials">
+    <a href="https://wa.me/918770161193" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+    <a href="tel:8770161193">Call +91 8770161193</a>
+    <a href="mailto:info@aleut.tech">info@aleut.tech</a>
+    <a href="https://www.aleut.tech" target="_blank" rel="noopener noreferrer">www.aleut.tech</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo-area">
+    <a href="#" style="text-decoration:none">
+      <img src="src/assets/logo.png" alt="Aleut Technologies" class="footer-logo-img" />
+    </a>
+    <div class="footer-sub" style="margin-bottom:0.6rem">Partners in Innovations</div>
+    <div class="footer-contact">
+      <a href="tel:8770161193" class="footer-contact-item"><span class="footer-contact-icon">📞</span>+91 8770161193</a>
+      <a href="mailto:info@aleut.tech" class="footer-contact-item"><span class="footer-contact-icon">✉</span>info@aleut.tech</a>
+      <a href="https://www.aleut.tech" target="_blank" rel="noopener noreferrer" class="footer-contact-item"><span class="footer-contact-icon">🌐</span>www.aleut.tech</a>
+      <span class="footer-contact-item"><span class="footer-contact-icon">📍</span>Aleut Technologies Pvt Ltd, India &amp; Australia</span>
+    </div>
+  </div>
+  <div class="footer-links">
+    <a href="#services">GMB Optimization</a>
+    <a href="#services">GMB Suspension Removal</a>
+    <a href="#services">Local SEO Strategy</a>
+    <a href="#services">GMB Management</a>
+    <a href="#about">About Us</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <div class="footer-right">
+    <div class="footer-copy">© 2026 Aleut Technologies Pvt Ltd.<br>All rights reserved.<br><br>
+    <a href="https://wa.me/918770161193" target="_blank" rel="noopener noreferrer"
+      style="display:inline-block;margin-top:0.75rem;background:var(--fire);color:var(--white);padding:0.5rem 1.1rem;border-radius:3px;text-decoration:none;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;transition:background .2s">
+      💬 Chat on WhatsApp
+    </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Custom cursor
+const dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+(function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing)})();
+
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.parentElement;
+    const wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen)item.classList.add('open');
+  });
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}
+  });
+});
+</script>
+</body>
+</html>
