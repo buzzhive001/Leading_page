@@ -46,8 +46,8 @@ function Cursor() {
   }, []);
   return (
     <>
-      <div ref={dot}  style={{ position:'fixed', width:8,  height:8,  background:T.blue, borderRadius:'50%', pointerEvents:'none', zIndex:9999, transform:'translate(-50%,-50%)', transition:'transform .1s' }} />
-      <div ref={ring} style={{ position:'fixed', width:32, height:32, border:`1.5px solid ${T.borderHi}`, borderRadius:'50%', pointerEvents:'none', zIndex:9998, transform:'translate(-50%,-50%)', transition:'left .08s ease-out, top .08s ease-out' }} />
+      <div ref={dot}  className="cursor-dot"  style={{ position:'fixed', width:8,  height:8,  background:T.blue, borderRadius:'50%', pointerEvents:'none', zIndex:9999, transform:'translate(-50%,-50%)', transition:'transform .1s' }} />
+      <div ref={ring} className="cursor-ring" style={{ position:'fixed', width:32, height:32, border:`1.5px solid ${T.borderHi}`, borderRadius:'50%', pointerEvents:'none', zIndex:9998, transform:'translate(-50%,-50%)', transition:'left .08s ease-out, top .08s ease-out' }} />
     </>
   );
 }
@@ -99,13 +99,17 @@ function GlowBtn({ children, href, onClick, outline=false, style={} }) {
 /* ── Section label chip ──────────────────────────────────────────── */
 function Label({ children }) {
   return (
-    <motion.span variants={fadeUp} style={{
-      display:'inline-flex', alignItems:'center', gap:'0.5rem',
-      fontFamily:T.mono, fontSize:'0.65rem', fontWeight:500,
-      letterSpacing:'0.14em', textTransform:'uppercase', color:T.blue,
-      background:'rgba(0,180,230,0.1)', border:`1px solid rgba(0,180,230,0.25)`,
-      padding:'0.3rem 0.9rem', borderRadius:20, marginBottom:'1rem',
-    }}>{children}</motion.span>
+    <motion.div variants={fadeUp} style={{
+      display:'block', marginBottom:'1rem',
+    }}>
+      <span style={{
+        display:'inline-flex', alignItems:'center', gap:'0.5rem',
+        fontFamily:T.mono, fontSize:'0.65rem', fontWeight:500,
+        letterSpacing:'0.14em', textTransform:'uppercase', color:T.blue,
+        background:'rgba(0,180,230,0.1)', border:`1px solid rgba(0,180,230,0.25)`,
+        padding:'0.3rem 0.9rem', borderRadius:20,
+      }}>{children}</span>
+    </motion.div>
   );
 }
 
@@ -137,7 +141,7 @@ function ContactBar() {
     { Icon:Phone,  label:'CALL / WHATSAPP', value:'8770161193',      href:'tel:8770161193' },
   ];
   return (
-    <div style={{ background:'#060b14', borderBottom:`1px solid ${T.border}`, display:'flex', justifyContent:'center', flexWrap:'wrap' }}>
+    <div className="contact-bar" style={{ background:'#060b14', borderBottom:`1px solid ${T.border}`, display:'flex', justifyContent:'center', flexWrap:'wrap' }}>
       {items.map((item, i) => (
         <a key={item.label} href={item.href}
           target={item.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer"
@@ -161,39 +165,104 @@ function ContactBar() {
 const NAV = ['Services','Process','Why Us','FAQ'];
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [mOpen, setMOpen] = useState(false);
+  const [mOpen, setMOpen]       = useState(false);
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', fn);
     return () => window.removeEventListener('scroll', fn);
   }, []);
+
+  const navBg = scrolled
+    ? 'rgba(8,13,24,0.97)'
+    : 'rgba(8,13,24,1)';
+
   return (
-    <motion.nav
-      initial={{ y:-80 }} animate={{ y:0 }} transition={{ duration:.5, ease:[.22,1,.36,1] }}
-      style={{
-        position:'sticky', top:0, zIndex:200,
-        background: scrolled ? 'rgba(10,15,26,0.92)' : 'rgba(10,15,26,0.6)',
-        backdropFilter:'blur(20px)',
-        borderBottom:`1px solid ${scrolled ? T.border : 'transparent'}`,
-        display:'flex', alignItems:'center', justifyContent:'space-between',
-        padding:'0 5vw', height:82, transition:'all .3s',
-      }}>
-      <img src={logo} alt="Aleut" style={{ height:72, objectFit:'contain', maxWidth:180 }} />
-      <ul style={{ display:'flex', gap:'2rem', listStyle:'none', margin:0, padding:0 }}>
-        {NAV.map(l => (
-          <li key={l}>
-            <a href={`#${l.toLowerCase().replace(' ','-')}`} style={{
-              color:T.muted, fontWeight:600, fontSize:'0.82rem', textDecoration:'none',
-              fontFamily:T.body, letterSpacing:'0.02em', transition:'color .2s',
-            }}
-              onMouseEnter={e => e.target.style.color = T.blue}
-              onMouseLeave={e => e.target.style.color = T.muted}
-            >{l}</a>
-          </li>
-        ))}
-      </ul>
-      <GlowBtn href="#cta">Get Free Audit</GlowBtn>
-    </motion.nav>
+    <>
+      <motion.nav
+        initial={{ y:-90 }} animate={{ y:0 }} transition={{ duration:.5, ease:[.22,1,.36,1] }}
+        style={{
+          position:'sticky', top:0, zIndex:200,
+          background: navBg,
+          backdropFilter:'blur(24px)',
+          borderBottom:`1px solid ${scrolled ? 'rgba(0,180,230,0.18)' : 'rgba(255,255,255,0.06)'}`,
+          display:'flex', alignItems:'center', justifyContent:'space-between',
+          padding:'0 5vw', height:86, transition:'all .3s',
+          boxShadow: scrolled ? '0 4px 32px rgba(0,0,0,0.45)' : 'none',
+        }}>
+        <img src={logo} alt="Aleut Technologies" style={{ height:76, objectFit:'contain', maxWidth:200 }} />
+
+        {/* Desktop links */}
+        <ul style={{ display:'flex', gap:'2.2rem', listStyle:'none', margin:0, padding:0 }} className="nav-links">
+          {NAV.map(l => (
+            <li key={l}>
+              <a href={`#${l.toLowerCase().replace(' ','-')}`} style={{
+                color:T.muted, fontWeight:600, fontSize:'0.84rem', textDecoration:'none',
+                fontFamily:T.body, letterSpacing:'0.03em', transition:'color .2s',
+              }}
+                onMouseEnter={e => e.target.style.color = T.blue}
+                onMouseLeave={e => e.target.style.color = T.muted}
+              >{l}</a>
+            </li>
+          ))}
+        </ul>
+
+        {/* Desktop CTA */}
+        <div className="nav-cta">
+          <GlowBtn href="#cta">Get Free Audit</GlowBtn>
+        </div>
+
+        {/* Hamburger — mobile only */}
+        <button
+          onClick={() => setMOpen(o => !o)}
+          className="hamburger"
+          style={{
+            display:'none', flexDirection:'column', gap:5, background:'none',
+            border:'none', padding:'6px', cursor:'pointer',
+          }}>
+          {[0,1,2].map(i => (
+            <motion.span key={i}
+              animate={mOpen
+                ? i===0 ? { rotate:45,  y:10 }
+                : i===1 ? { opacity:0 }
+                :          { rotate:-45, y:-10 }
+                : { rotate:0, y:0, opacity:1 }}
+              style={{ display:'block', width:24, height:2, background:T.text, borderRadius:2, transformOrigin:'center' }}
+            />
+          ))}
+        </button>
+      </motion.nav>
+
+      {/* Mobile menu drawer */}
+      <AnimatePresence>
+        {mOpen && (
+          <motion.div
+            initial={{ opacity:0, y:-16 }} animate={{ opacity:1, y:0 }} exit={{ opacity:0, y:-16 }}
+            transition={{ duration:.28 }}
+            style={{
+              position:'fixed', top:86, left:0, right:0, zIndex:199,
+              background:'rgba(8,13,24,0.98)', backdropFilter:'blur(24px)',
+              borderBottom:`1px solid ${T.border}`,
+              padding:'1.4rem 6vw 1.8rem',
+              display:'flex', flexDirection:'column', gap:'0.2rem',
+            }}>
+            {NAV.map(l => (
+              <a key={l} href={`#${l.toLowerCase().replace(' ','-')}`}
+                onClick={() => setMOpen(false)}
+                style={{
+                  color:T.text, fontWeight:600, fontSize:'1.05rem', textDecoration:'none',
+                  fontFamily:T.body, padding:'0.75rem 0',
+                  borderBottom:`1px solid ${T.border}`,
+                }}>
+                {l}
+              </a>
+            ))}
+            <div style={{ marginTop:'1.2rem' }}>
+              <GlowBtn href="#cta" style={{ width:'100%', justifyContent:'center' }}>Get Free Audit</GlowBtn>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
 
@@ -235,7 +304,7 @@ function Hero() {
           and convert visitors into high-quality leads.
         </motion.p>
 
-        <motion.div variants={fadeUp} style={{ display:'flex', gap:'1rem', justifyContent:'center', flexWrap:'wrap', marginBottom:'3.5rem' }}>
+        <motion.div variants={fadeUp} className="hero-buttons" style={{ display:'flex', gap:'1rem', justifyContent:'center', flexWrap:'wrap', marginBottom:'3.5rem' }}>
           <GlowBtn href="#cta">Start Your Campaign →</GlowBtn>
           <GlowBtn href="#process" outline>View Our Process</GlowBtn>
         </motion.div>
@@ -277,7 +346,7 @@ function About() {
   ];
   return (
     <section id="about" style={{ background:T.bg2, padding:'100px 5vw', borderTop:`1px solid ${T.border}` }}>
-      <div style={{ maxWidth:1100, margin:'0 auto', display:'grid', gridTemplateColumns:'1fr 1fr', gap:'4rem', alignItems:'center' }} ref={ref}>
+      <div className="about-grid" style={{ maxWidth:1100, margin:'0 auto', display:'grid', gridTemplateColumns:'1fr 1fr', gap:'4rem', alignItems:'center' }} ref={ref}>
         <motion.div initial="hidden" animate={inView ? 'show' : 'hidden'} variants={stagger}>
           <Label>Who We Are</Label>
           <motion.h2 variants={fromLeft} style={{ fontFamily:T.head, fontSize:'clamp(1.8rem,3vw,2.7rem)', fontWeight:800, color:T.white, lineHeight:1.15, marginBottom:'1.2rem' }}>
@@ -512,11 +581,11 @@ function Process() {
         </motion.div>
         <motion.div initial="hidden" animate={inView ? 'show' : 'hidden'} variants={stagger} style={{ position:'relative' }}>
           {/* Vertical line */}
-          <div style={{ position:'absolute', left:27, top:20, bottom:20, width:2, background:`linear-gradient(to bottom, ${T.blue}, transparent)`, zIndex:0 }} />
+          <div className="process-line" style={{ position:'absolute', left:27, top:20, bottom:20, width:2, background:`linear-gradient(to bottom, ${T.blue}, transparent)`, zIndex:0 }} />
 
           <div style={{ display:'flex', flexDirection:'column', gap:'1.2rem' }}>
             {STEPS.map((s, i) => (
-              <motion.div key={s.num} variants={i % 2 === 0 ? fromLeft : fromRight} style={{ display:'grid', gridTemplateColumns:'56px 1fr', gap:'1.2rem', alignItems:'start', position:'relative', zIndex:1 }}>
+              <motion.div key={s.num} variants={i % 2 === 0 ? fromLeft : fromRight} className="process-step" style={{ display:'grid', gridTemplateColumns:'56px 1fr', gap:'1.2rem', alignItems:'start', position:'relative', zIndex:1 }}>
                 {/* Node */}
                 <motion.div
                   initial={{ scale:0 }} animate={inView ? { scale:1 } : {}} transition={{ delay: i*.12+.3, type:'spring', stiffness:200 }}
@@ -587,7 +656,7 @@ const FAQS = [
   { q:'Why hire a professional SEO company?',         a:'Professional SEO delivers consistent organic growth, improves domain authority, and generates long-term ROI — far beyond what ad spend alone can achieve.' },
   { q:'How much do your SEO services cost?',          a:'Pricing is customized to your goals, competition, and project scope. We offer flexible plans — contact us for a personalized quote based on your needs.' },
   { q:'Do you provide monthly SEO reports?',          a:'Yes. Every client receives detailed monthly reports covering keyword rankings, organic traffic, backlink growth, and campaign performance insights.' },
-  { q:'Can you help rank in Google Maps results?',    a:"Absolutely. Our Local SEO service specializes in Google Business Profile optimization and Maps visibility — helping you dominate the local '3-pack'." },
+  { q:'Can you help local businesses rank in Google Maps?',    a:"Absolutely. Our Local SEO strategies help businesses improve visibility in Google Maps and local search results.'." },
 ];
 
 function FAQ() {
@@ -663,13 +732,13 @@ function CTA() {
             </span>
           ))}
         </motion.div>
-        <motion.div variants={fadeUp} style={{ display:'flex', gap:'0.75rem', justifyContent:'center', flexWrap:'wrap', marginBottom:'2rem' }}>
+        <motion.div variants={fadeUp} className="cta-form" style={{ display:'flex', gap:'0.75rem', justifyContent:'center', flexWrap:'wrap', marginBottom:'2rem' }}>
           <input type="text" placeholder="Your website URL or phone number" style={{
             padding:'0.9rem 1.4rem', borderRadius:10, background:'rgba(255,255,255,0.06)',
             border:`1px solid ${T.border}`, color:T.text, fontFamily:T.body, fontSize:'0.88rem',
             outline:'none', width:280, backdropFilter:'blur(8px)',
           }} />
-          <GlowBtn href="#" style={{ whiteSpace:'nowrap' }}>Schedule Free Consultation →</GlowBtn>
+          <GlowBtn href="tel:8770161193">Get Free Consultation →</GlowBtn>
         </motion.div>
         <motion.div variants={fadeUp} style={{ display:'flex', gap:'2rem', justifyContent:'center', flexWrap:'wrap' }}>
           {[

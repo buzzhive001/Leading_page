@@ -10,13 +10,7 @@ body {
   cursor: none;
 }
 
-/* Clip overflow so left/right slide-ins don't cause horizontal scroll */
-section {
-  overflow: hidden;
-}
-
 a, button { cursor: none; }
-
 input { font-family: 'Inter', sans-serif; }
 
 ::-webkit-scrollbar { width: 3px; }
@@ -25,6 +19,97 @@ input { font-family: 'Inter', sans-serif; }
 
 input::placeholder { color: #475569; }
 
+/* overflow-x clip on sections — does NOT affect accordion height (clip ≠ hidden) */
+section { overflow-x: clip; }
+
+/* ── Responsive navbar ─────────────────────────────────────────── */
 @media (max-width: 860px) {
-  nav ul { display: none !important; }
+  .nav-links { display: none !important; }
+  .nav-cta   { display: none !important; }
+  .hamburger { display: flex !important; }
+}
+
+@media (min-width: 861px) {
+  .hamburger { display: none !important; }
+}
+
+/* ── Hide custom cursor on touch devices ───────────────────────── */
+@media (hover: none) and (pointer: coarse) {
+  body, a, button { cursor: auto !important; }
+  .cursor-dot, .cursor-ring { display: none !important; }
+}
+
+/* ── About section: 2-col → 1-col on tablet/mobile ────────────── */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+}
+
+/* ── CTA form: full-width stacked on mobile ────────────────────── */
+@media (max-width: 640px) {
+  .cta-form {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .cta-form input {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .cta-form a,
+  .cta-form button {
+    width: 100% !important;
+    justify-content: center !important;
+    white-space: normal !important;
+  }
+}
+
+/* ── Hero buttons: stack on small screens ──────────────────────── */
+@media (max-width: 480px) {
+  .hero-buttons {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .hero-buttons a {
+    width: 100% !important;
+    max-width: 300px !important;
+    justify-content: center !important;
+  }
+}
+
+/* ── Contact bar: stack on mobile, remove side borders ─────────── */
+@media (max-width: 640px) {
+  .contact-bar {
+    flex-direction: column !important;
+  }
+  .contact-bar a {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+    padding-left: 6vw !important;
+    padding-right: 6vw !important;
+    justify-content: flex-start !important;
+  }
+  .contact-bar a:last-child {
+    border-bottom: none !important;
+  }
+}
+
+/* ── Section vertical padding: reduce on mobile ────────────────── */
+@media (max-width: 640px) {
+  section {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+}
+
+/* ── Process: tighten step grid on small screens ───────────────── */
+@media (max-width: 480px) {
+  .process-step {
+    grid-template-columns: 46px 1fr !important;
+    gap: 0.8rem !important;
+  }
+  .process-line {
+    left: 22px !important;
+  }
 }
