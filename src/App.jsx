@@ -189,7 +189,7 @@ function Navbar() {
           padding:'0 5vw', height:86, transition:'all .3s',
           boxShadow: scrolled ? '0 4px 32px rgba(0,0,0,0.45)' : 'none',
         }}>
-        <img src={logo} alt="Aleut Technologies" style={{ height:76, objectFit:'contain', maxWidth:200 }} />
+        <img src={logo} alt="Aleut Technologies" className="nav-logo" style={{ height:76, objectFit:'contain', maxWidth:200 }} />
 
         {/* Desktop links */}
         <ul style={{ display:'flex', gap:'2.2rem', listStyle:'none', margin:0, padding:0 }} className="nav-links">
