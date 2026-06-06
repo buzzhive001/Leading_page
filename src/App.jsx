@@ -409,7 +409,9 @@ function Hero() {
                 <div>
                   <label style={labelStyle}>Phone Number *</label>
                   <input type="tel" name="phone" required value={form.phone}
-                    onChange={handleChange} placeholder="+91 00000 00000" style={inputStyle}
+                    onChange={e => { if (/^\d{0,10}$/.test(e.target.value)) handleChange(e); }}
+                    placeholder="10-digit mobile number" style={inputStyle}
+                    maxLength={10} pattern="\d{10}" inputMode="numeric"
                     onFocus={e => e.target.style.borderColor = T.blue}
                     onBlur={e  => e.target.style.borderColor = T.border}
                   />
