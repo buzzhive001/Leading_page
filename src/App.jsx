@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useInView, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { Search, Zap, Link2, Code2, ShoppingCart, FileText, Trophy, Target, Users, MessageCircle, TrendingUp, CheckCircle2, Phone, Mail, Globe, Facebook, Instagram } from 'lucide-react';
+import { Search, Zap, Link2, Code2, ShoppingCart, FileText, Trophy, Target, Users, MessageCircle, TrendingUp, CheckCircle2, Phone, Mail, Globe } from 'lucide-react';
 import logo from './assets/logo.png';
 import './App.css';
 
@@ -772,11 +772,25 @@ function CTA() {
   );
 }
 
+/* ── Social icon SVGs ────────────────────────────────────────────── */
+const FbIcon = () => (
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  </svg>
+);
+const IgIcon = () => (
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+    <circle cx="12" cy="12" r="4"/>
+    <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+  </svg>
+);
+
 /* ── Footer ──────────────────────────────────────────────────────── */
 function Footer() {
   const socials = [
-    { Icon:Facebook,  href:'https://www.facebook.com/people/Aleut-Technologies-Pvt-Ltd/61560271532638/', label:'Facebook' },
-    { Icon:Instagram, href:'https://www.instagram.com/aleuttech_',                                       label:'Instagram' },
+    { Icon:FbIcon, href:'https://www.facebook.com/people/Aleut-Technologies-Pvt-Ltd/61560271532638/', label:'Facebook' },
+    { Icon:IgIcon, href:'https://www.instagram.com/aleuttech_',                                       label:'Instagram' },
   ];
   return (
     <footer style={{ background:'#060b14', borderTop:`1px solid ${T.border}` }}>
@@ -798,7 +812,7 @@ function Footer() {
                 display:'flex', alignItems:'center', justifyContent:'center',
                 color:T.blue, textDecoration:'none', transition:'all .2s',
               }}>
-              <Icon size={17} strokeWidth={1.8} />
+              <Icon />
             </motion.a>
           ))}
         </div>
