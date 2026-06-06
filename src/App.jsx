@@ -141,14 +141,13 @@ function ContactBar() {
     { Icon:Phone,  label:'CALL / WHATSAPP', value:'8770161193',      href:'tel:8770161193' },
   ];
   return (
-    <div className="contact-bar" style={{ background:'#060b14', borderBottom:`1px solid ${T.border}`, display:'flex', justifyContent:'center', flexWrap:'wrap' }}>
+    <div className="contact-bar" style={{ background:'#060b14', borderBottom:`1px solid ${T.border}`, display:'flex', justifyContent:'space-between', flexWrap:'wrap' }}>
       {items.map((item, i) => (
         <a key={item.label} href={item.href}
           target={item.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer"
           style={{
             display:'flex', alignItems:'center', gap:'0.6rem',
-            padding:'0.55rem 2.8rem', textDecoration:'none',
-            borderRight: i < 2 ? `1px solid ${T.border}` : 'none',
+            padding:'0.7rem 2vw', textDecoration:'none',
           }}>
           <item.Icon size={13} color={T.blue} />
           <div>
