@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useInView, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { Search, Zap, Link2, Code2, ShoppingCart, FileText, Trophy, Target, Users, MessageCircle, TrendingUp, CheckCircle2, Phone, Mail, Globe } from 'lucide-react';
+import { Search, Zap, Link2, Code2, ShoppingCart, FileText, Trophy, Target, Users, MessageCircle, TrendingUp, CheckCircle2, Phone, Mail, Globe, Facebook, Instagram } from 'lucide-react';
 import logo from './assets/logo.png';
 import './App.css';
 
@@ -774,12 +774,39 @@ function CTA() {
 
 /* ── Footer ──────────────────────────────────────────────────────── */
 function Footer() {
+  const socials = [
+    { Icon:Facebook,  href:'https://www.facebook.com/people/Aleut-Technologies-Pvt-Ltd/61560271532638/', label:'Facebook' },
+    { Icon:Instagram, href:'https://www.instagram.com/aleuttech_',                                       label:'Instagram' },
+  ];
   return (
-    <footer style={{ background:'#060b14', borderTop:`1px solid ${T.border}`, padding:'2.5rem 5vw', textAlign:'center'  }}>
-      <img src={logo} alt="Aleut Technologies" style={{ height:90, objectFit:'contain', marginBottom:'0.8rem', opacity:0.95, maxWidth:220 }} />
-      <p style={{ fontFamily:T.mono, fontSize:'0.7rem', color:T.muted, letterSpacing:'0.08em' }}>
-        © {new Date().getFullYear()} Aleut Technologies Pvt Ltd. All rights reserved.
-      </p>
+    <footer style={{ background:'#060b14', borderTop:`1px solid ${T.border}` }}>
+      <ContactBar />
+      <div style={{ padding:'2.5rem 5vw', textAlign:'center' }}>
+        <img src={logo} alt="Aleut Technologies" style={{ height:90, objectFit:'contain', marginBottom:'1rem', opacity:0.95, maxWidth:220 }} />
+
+        {/* Social links */}
+        <div style={{ display:'flex', justifyContent:'center', gap:'0.9rem', marginBottom:'1.2rem' }}>
+          {socials.map(({ Icon, href, label }) => (
+            <motion.a key={label} href={href} target="_blank" rel="noopener noreferrer"
+              aria-label={label}
+              whileHover={{ scale:1.12, boxShadow:`0 0 16px ${T.blueGlow}` }}
+              whileTap={{ scale:.95 }}
+              style={{
+                width:38, height:38, borderRadius:'50%',
+                background:'rgba(0,180,230,0.08)',
+                border:`1px solid rgba(0,180,230,0.22)`,
+                display:'flex', alignItems:'center', justifyContent:'center',
+                color:T.blue, textDecoration:'none', transition:'all .2s',
+              }}>
+              <Icon size={17} strokeWidth={1.8} />
+            </motion.a>
+          ))}
+        </div>
+
+        <p style={{ fontFamily:T.mono, fontSize:'0.7rem', color:T.muted, letterSpacing:'0.08em' }}>
+          © {new Date().getFullYear()} Aleut Technologies Pvt Ltd. All rights reserved.
+        </p>
+      </div>
     </footer>
   );
 }
@@ -789,7 +816,6 @@ export default function App() {
   return (
     <>
       <Cursor />
-      <ContactBar />
       <Navbar />
       <Hero />
       <About />
