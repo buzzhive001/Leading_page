@@ -787,36 +787,67 @@ const IgIcon = () => (
 
 /* ── Footer ──────────────────────────────────────────────────────── */
 function Footer() {
+  const contacts = [
+    { Icon:Globe,  label:'WEBSITE',        value:'www.aleut.tech',  href:'https://www.aleut.tech' },
+    { Icon:Mail,   label:'EMAIL',           value:'info@aleut.tech', href:'mailto:info@aleut.tech' },
+    { Icon:Phone,  label:'CALL / WHATSAPP', value:'8770161193',      href:'tel:8770161193' },
+  ];
   const socials = [
     { Icon:FbIcon, href:'https://www.facebook.com/people/Aleut-Technologies-Pvt-Ltd/61560271532638/', label:'Facebook' },
     { Icon:IgIcon, href:'https://www.instagram.com/aleuttech_',                                       label:'Instagram' },
   ];
   return (
     <footer style={{ background:'#060b14', borderTop:`1px solid ${T.border}` }}>
-      <ContactBar />
-      <div style={{ padding:'2.5rem 5vw', textAlign:'center' }}>
-        <img src={logo} alt="Aleut Technologies" style={{ height:90, objectFit:'contain', marginBottom:'1rem', opacity:0.95, maxWidth:220 }} />
-
-        {/* Social links */}
-        <div style={{ display:'flex', justifyContent:'center', gap:'0.9rem', marginBottom:'1.2rem' }}>
-          {socials.map(({ Icon, href, label }) => (
-            <motion.a key={label} href={href} target="_blank" rel="noopener noreferrer"
-              aria-label={label}
-              whileHover={{ scale:1.12, boxShadow:`0 0 16px ${T.blueGlow}` }}
-              whileTap={{ scale:.95 }}
-              style={{
-                width:38, height:38, borderRadius:'50%',
-                background:'rgba(0,180,230,0.08)',
-                border:`1px solid rgba(0,180,230,0.22)`,
-                display:'flex', alignItems:'center', justifyContent:'center',
-                color:T.blue, textDecoration:'none', transition:'all .2s',
-              }}>
-              <Icon />
-            </motion.a>
+      {/* Main footer row */}
+      <div className="footer-main" style={{
+        maxWidth:1100, margin:'0 auto', padding:'2.8rem 5vw',
+        display:'flex', justifyContent:'space-between', alignItems:'center', gap:'2rem',
+      }}>
+        {/* LEFT — contact info + socials */}
+        <div style={{ display:'flex', flexDirection:'column', gap:'0.85rem' }}>
+          {contacts.map(({ Icon, label, value, href }) => (
+            <a key={label} href={href}
+              target={href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer"
+              style={{ display:'flex', alignItems:'center', gap:'0.7rem', textDecoration:'none' }}
+              onMouseEnter={e => e.currentTarget.style.opacity = '0.8'}
+              onMouseLeave={e => e.currentTarget.style.opacity = '1'}>
+              <Icon size={14} color={T.blue} />
+              <div>
+                <div style={{ fontFamily:T.mono, fontSize:'0.52rem', letterSpacing:'0.14em', color:T.muted, textTransform:'uppercase', lineHeight:1 }}>{label}</div>
+                <div style={{ color:T.text, fontSize:'0.82rem', fontWeight:600, marginTop:'0.1rem', fontFamily:T.body }}>{value}</div>
+              </div>
+            </a>
           ))}
+
+          {/* Social icons */}
+          <div style={{ display:'flex', gap:'0.7rem', marginTop:'0.3rem' }}>
+            {socials.map(({ Icon, href, label }) => (
+              <motion.a key={label} href={href} target="_blank" rel="noopener noreferrer"
+                aria-label={label}
+                whileHover={{ scale:1.12, boxShadow:`0 0 16px ${T.blueGlow}` }}
+                whileTap={{ scale:.95 }}
+                style={{
+                  width:36, height:36, borderRadius:'50%',
+                  background:'rgba(0,180,230,0.08)', border:`1px solid rgba(0,180,230,0.22)`,
+                  display:'flex', alignItems:'center', justifyContent:'center',
+                  color:T.blue, textDecoration:'none', transition:'all .2s',
+                }}>
+                <Icon />
+              </motion.a>
+            ))}
+          </div>
         </div>
 
-        <p style={{ fontFamily:T.mono, fontSize:'0.7rem', color:T.muted, letterSpacing:'0.08em' }}>
+        {/* RIGHT — logo + company name */}
+        <div style={{ display:'flex', flexDirection:'column', alignItems:'flex-end', textAlign:'right' }}>
+          <img src={logo} alt="Aleut Technologies" style={{ height:80, objectFit:'contain', maxWidth:200, marginBottom:'0.5rem', opacity:0.95 }} />
+          <p style={{ fontFamily:T.mono, fontSize:'0.6rem', color:T.muted, letterSpacing:'0.08em' }}>Aleut Technologies Pvt Ltd</p>
+        </div>
+      </div>
+
+      {/* Bottom copyright bar */}
+      <div style={{ borderTop:`1px solid ${T.border}`, padding:'0.9rem 5vw', textAlign:'center' }}>
+        <p style={{ fontFamily:T.mono, fontSize:'0.65rem', color:T.muted, letterSpacing:'0.07em' }}>
           © {new Date().getFullYear()} Aleut Technologies Pvt Ltd. All rights reserved.
         </p>
       </div>

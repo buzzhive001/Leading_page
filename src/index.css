@@ -103,6 +103,18 @@ section { overflow-x: clip; }
   }
 }
 
+/* ── Footer: stack on mobile ───────────────────────────────────── */
+@media (max-width: 640px) {
+  .footer-main {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .footer-main > div:last-child {
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+}
+
 /* ── Process: tighten step grid on small screens ───────────────── */
 @media (max-width: 480px) {
   .process-step {
