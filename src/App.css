@@ -2,3 +2,16 @@
 body { font-family: 'Poppins', sans-serif; background: #fff; color: #0d1b2a; cursor: none; }
 html { scroll-behavior: smooth; }
 a, button { cursor: none; }
+
+@media (max-width: 900px) {
+  .hero-two-col { grid-template-columns: 1fr !important; gap: 2rem !important; }
+}
+
+@media (max-width: 600px) {
+  section { padding-left: 10px !important; padding-right: 10px !important; }
+  nav     { padding-left: 10px !important; padding-right: 10px !important; }
+  .hero-two-col { gap: 1.5rem !important; }
+  .cta-form-grid { grid-template-columns: 1fr !important; }
+  .footer-main   { padding-left: 10px !important; padding-right: 10px !important; }
+  .contact-bar   { padding-left: 10px !important; padding-right: 10px !important; }
+}

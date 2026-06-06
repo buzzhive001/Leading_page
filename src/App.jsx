@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { motion, useInView, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Search, Zap, Link2, Code2, ShoppingCart, FileText, Trophy, Target, Users, MessageCircle, TrendingUp, CheckCircle2, Phone, Mail, Globe } from 'lucide-react';
 import logo from './assets/logo.png';
@@ -286,60 +287,176 @@ function Hero() {
     { val:'6X',   label:'Lead Growth',     delay:.45 },
     { val:'95%',  label:'Client Retention',delay:.6 },
   ];
+
+  const [form, setForm]     = useState({ name:'', email:'', phone:'', website:'' });
+  const [status, setStatus] = useState('idle');
+
+  const inputStyle = {
+    width:'100%', padding:'0.75rem 1rem', borderRadius:8,
+    background:'rgba(255,255,255,0.06)', border:`1px solid ${T.border}`,
+    color:T.text, fontFamily:T.body, fontSize:'0.85rem',
+    outline:'none', transition:'border-color .2s',
+  };
+  const labelStyle = {
+    display:'block', fontFamily:T.mono, fontSize:'0.58rem',
+    letterSpacing:'0.12em', textTransform:'uppercase', color:T.muted, marginBottom:'0.35rem',
+  };
+
+  const handleChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    setStatus('sending');
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID,
+        { name: form.name, email: form.email, phone: form.phone, website: form.website },
+        EMAILJS_PUBLIC_KEY,
+      );
+      setStatus('success');
+      setForm({ name:'', email:'', phone:'', website:'' });
+    } catch {
+      setStatus('error');
+    }
+  };
+
   return (
     <section style={{
-      minHeight:'92vh', background:`radial-gradient(ellipse 80% 60% at 70% 10%, rgba(0,180,230,0.12) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 20% 80%, rgba(27,58,107,0.18) 0%, transparent 60%), ${T.bg}`,
-      display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center',
-      padding:'100px 5vw 80px', textAlign:'center', position:'relative', overflow:'hidden',
+      minHeight:'92vh',
+      background:`radial-gradient(ellipse 80% 60% at 70% 10%, rgba(0,180,230,0.12) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 20% 80%, rgba(27,58,107,0.18) 0%, transparent 60%), ${T.bg}`,
+      display:'flex', alignItems:'center',
+      padding:'100px 5vw 80px', position:'relative', overflow:'hidden',
     }}>
       {/* Animated grid */}
       <div style={{ position:'absolute', inset:0, backgroundImage:`linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px)`, backgroundSize:'64px 64px', pointerEvents:'none' }} />
 
-      <motion.div variants={stagger} initial="hidden" animate="show" style={{ position:'relative', zIndex:1, maxWidth:860, width:'100%' }}>
-        <Label>Aleut Technologies — SEO Services</Label>
+      <div className="hero-two-col" style={{ position:'relative', zIndex:1, maxWidth:1200, width:'100%', margin:'0 auto', display:'grid', gridTemplateColumns:'1fr 1fr', gap:'4rem', alignItems:'center' }}>
 
-        <motion.h1 variants={fadeUp} style={{
-          fontFamily:T.head, fontSize:'clamp(2.4rem,6vw,5rem)', fontWeight:800,
-          lineHeight:1.08, color:T.white, marginBottom:'1.5rem', letterSpacing:'-0.02em',
-        }}>
-          SEO That Ranks You{' '}
-          <span style={{ color:T.blue, position:'relative' }}>
-            #1 on Google
-            <motion.span
-              style={{ position:'absolute', bottom:-4, left:0, right:0, height:3, background:`linear-gradient(90deg,${T.blue},transparent)`, borderRadius:2 }}
-              initial={{ scaleX:0, originX:0 }} animate={{ scaleX:1 }} transition={{ delay:.8, duration:.8 }}
-            />
-          </span>
-        </motion.h1>
+        {/* ── LEFT — Content ── */}
+        <motion.div initial="hidden" animate="show" variants={stagger}>
+          <Label>Aleut Technologies — SEO Services</Label>
 
-        <motion.p variants={fadeUp} style={{ fontFamily:T.body, fontSize:'1.05rem', color:T.muted, lineHeight:1.8, maxWidth:600, margin:'0 auto 2.5rem' }}>
-          Data-driven SEO strategies that increase organic traffic, dominate search rankings,
-          and convert visitors into high-quality leads.
-        </motion.p>
+          <motion.h1 variants={fadeUp} style={{
+            fontFamily:T.head, fontSize:'clamp(2.2rem,5vw,4.2rem)', fontWeight:800,
+            lineHeight:1.08, color:T.white, marginBottom:'1.4rem', letterSpacing:'-0.02em',
+          }}>
+            SEO That Ranks You{' '}
+            <span style={{ color:T.blue, position:'relative' }}>
+              #1 on Google
+              <motion.span
+                style={{ position:'absolute', bottom:-4, left:0, right:0, height:3, background:`linear-gradient(90deg,${T.blue},transparent)`, borderRadius:2 }}
+                initial={{ scaleX:0, originX:0 }} animate={{ scaleX:1 }} transition={{ delay:.8, duration:.8 }}
+              />
+            </span>
+          </motion.h1>
 
-        <motion.div variants={fadeUp} className="hero-buttons" style={{ display:'flex', gap:'1rem', justifyContent:'center', flexWrap:'wrap', marginBottom:'3.5rem' }}>
-          <GlowBtn href="#cta">Start Your Campaign →</GlowBtn>
-          <GlowBtn href="#process" outline>View Our Process</GlowBtn>
+          <motion.p variants={fadeUp} style={{ fontFamily:T.body, fontSize:'1rem', color:T.muted, lineHeight:1.8, marginBottom:'2.5rem' }}>
+            Data-driven SEO strategies that increase organic traffic, dominate search rankings,
+            and convert visitors into high-quality leads.
+          </motion.p>
+
+          <motion.div variants={fadeUp} style={{ display:'flex', gap:'1rem', flexWrap:'wrap', marginBottom:'2.5rem' }}>
+            <GlowBtn href="#process" outline>View Our Process</GlowBtn>
+          </motion.div>
+
+          {/* Metric cards */}
+          <div style={{ display:'flex', gap:'1rem', flexWrap:'wrap' }}>
+            {metrics.map(m => (
+              <motion.div key={m.label}
+                initial={{ opacity:0, y:24 }} animate={{ opacity:1, y:0 }}
+                transition={{ delay:m.delay, duration:.6 }}
+                whileHover={{ y:-4, boxShadow:`0 12px 32px ${T.blueGlow}` }}
+                style={{
+                  background:'rgba(0,180,230,0.07)', border:`1px solid rgba(0,180,230,0.25)`,
+                  backdropFilter:'blur(16px)', borderRadius:14, padding:'1rem 1.6rem', textAlign:'center',
+                  transition:'all .3s',
+                }}>
+                <div style={{ fontFamily:T.head, fontSize:'1.9rem', fontWeight:800, color:T.blue, lineHeight:1 }}>{m.val}</div>
+                <div style={{ fontFamily:T.mono, fontSize:'0.58rem', color:T.muted, marginTop:'0.3rem', letterSpacing:'0.1em', textTransform:'uppercase' }}>{m.label}</div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
-        {/* Floating metric cards */}
-        <div style={{ display:'flex', gap:'1rem', justifyContent:'center', flexWrap:'wrap' }}>
-          {metrics.map(m => (
-            <motion.div key={m.label}
-              initial={{ opacity:0, y:24 }} animate={{ opacity:1, y:0 }}
-              transition={{ delay:m.delay, duration:.6 }}
-              whileHover={{ y:-4, boxShadow:`0 12px 32px ${T.blueGlow}` }}
-              style={{
-                background:'rgba(0,180,230,0.07)', border:`1px solid rgba(0,180,230,0.25)`,
-                backdropFilter:'blur(16px)', borderRadius:14, padding:'1rem 1.6rem', textAlign:'center',
-                boxShadow:`0 0 0 1px rgba(255,255,255,0.05)`, transition:'all .3s',
-              }}>
-              <div style={{ fontFamily:T.head, fontSize:'2rem', fontWeight:800, color:T.blue, lineHeight:1 }}>{m.val}</div>
-              <div style={{ fontFamily:T.mono, fontSize:'0.6rem', color:T.muted, marginTop:'0.3rem', letterSpacing:'0.1em', textTransform:'uppercase' }}>{m.label}</div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
+        {/* ── RIGHT — Form ── */}
+        <motion.div initial="hidden" animate="show" variants={stagger}>
+          <GlassCard style={{ padding:'2rem' }} hoverGlow={false}>
+            <motion.p variants={fadeUp} style={{ fontFamily:T.mono, fontSize:'0.6rem', letterSpacing:'0.14em', textTransform:'uppercase', color:T.blue, marginBottom:'0.5rem' }}>
+              Free Strategy Session
+            </motion.p>
+            <motion.h2 variants={fadeUp} style={{ fontFamily:T.head, fontSize:'clamp(1.3rem,2vw,1.7rem)', fontWeight:800, color:T.white, lineHeight:1.25, marginBottom:'1.4rem' }}>
+              Request a Free SEO<br />Strategy Session
+            </motion.h2>
+
+            <motion.form variants={fadeUp} onSubmit={handleSubmit} style={{ display:'flex', flexDirection:'column', gap:'0.85rem' }}>
+              <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'0.75rem' }} className="cta-form-grid">
+                <div>
+                  <label style={labelStyle}>Name *</label>
+                  <input type="text" name="name" required value={form.name}
+                    onChange={handleChange} placeholder="Your full name" style={inputStyle}
+                    onFocus={e => e.target.style.borderColor = T.blue}
+                    onBlur={e  => e.target.style.borderColor = T.border}
+                  />
+                </div>
+                <div>
+                  <label style={labelStyle}>Email *</label>
+                  <input type="email" name="email" required value={form.email}
+                    onChange={handleChange} placeholder="you@example.com" style={inputStyle}
+                    onFocus={e => e.target.style.borderColor = T.blue}
+                    onBlur={e  => e.target.style.borderColor = T.border}
+                  />
+                </div>
+                <div>
+                  <label style={labelStyle}>Phone Number *</label>
+                  <input type="tel" name="phone" required value={form.phone}
+                    onChange={handleChange} placeholder="+91 00000 00000" style={inputStyle}
+                    onFocus={e => e.target.style.borderColor = T.blue}
+                    onBlur={e  => e.target.style.borderColor = T.border}
+                  />
+                </div>
+                <div>
+                  <label style={labelStyle}>Website URL *</label>
+                  <input type="url" name="website" required value={form.website}
+                    onChange={handleChange} placeholder="https://yourwebsite.com" style={inputStyle}
+                    onFocus={e => e.target.style.borderColor = T.blue}
+                    onBlur={e  => e.target.style.borderColor = T.border}
+                  />
+                </div>
+              </div>
+
+              <motion.button
+                type="submit" disabled={status === 'sending'}
+                whileHover={status !== 'sending' ? { scale:1.02, boxShadow:`0 0 28px rgba(0,180,230,0.5)` } : {}}
+                whileTap={status !== 'sending'   ? { scale:.97 } : {}}
+                style={{
+                  width:'100%', padding:'0.9rem', borderRadius:9, border:'none',
+                  cursor: status === 'sending' ? 'not-allowed' : 'pointer',
+                  background: status === 'sending' ? 'rgba(0,180,230,0.45)' : T.blue,
+                  color:'#fff', fontFamily:T.body, fontWeight:700, fontSize:'0.95rem',
+                  letterSpacing:'0.02em', transition:'all .25s',
+                  boxShadow:`0 0 16px rgba(0,180,230,0.2)`,
+                }}
+              >
+                {status === 'sending' ? 'Sending…' : 'Submit'}
+              </motion.button>
+
+              {status === 'success' && (
+                <motion.p initial={{ opacity:0, y:6 }} animate={{ opacity:1, y:0 }}
+                  style={{ textAlign:'center', color:'#4ade80', fontFamily:T.body, fontSize:'0.88rem', fontWeight:600 }}>
+                  ✓ Thank you! We'll reach out to you shortly.
+                </motion.p>
+              )}
+              {status === 'error' && (
+                <motion.p initial={{ opacity:0, y:6 }} animate={{ opacity:1, y:0 }}
+                  style={{ textAlign:'center', color:'#f87171', fontFamily:T.body, fontSize:'0.88rem', fontWeight:600 }}>
+                  Something went wrong. Please try again or contact us directly.
+                </motion.p>
+              )}
+            </motion.form>
+          </GlassCard>
+        </motion.div>
+
+      </div>
 
       {/* Bottom fade */}
       <div style={{ position:'absolute', bottom:0, left:0, right:0, height:120, background:`linear-gradient(to top, ${T.bg}, transparent)`, pointerEvents:'none' }} />
@@ -723,9 +840,14 @@ function FAQ() {
   );
 }
 
+/* ── EmailJS credentials ── */
+const EMAILJS_SERVICE_ID  = 'service_0kefz7b';
+const EMAILJS_TEMPLATE_ID = 'template_8je985n';
+const EMAILJS_PUBLIC_KEY  = 'yVK0ExFBCF9f26nH8';
+
 /* ── CTA ─────────────────────────────────────────────────────────── */
 function CTA() {
-  const ref = useRef(null);
+  const ref    = useRef(null);
   const inView = useInView(ref, { once:true, margin:'-60px' });
   return (
     <section id="cta" style={{ background:`radial-gradient(ellipse 80% 60% at 50% 50%, rgba(0,180,230,0.14) 0%, transparent 70%), linear-gradient(160deg,#0a1828 0%,${T.navy} 100%)`, padding:'110px 5vw', textAlign:'center', borderTop:`1px solid ${T.border}`, position:'relative', overflow:'hidden' }} ref={ref}>
@@ -735,23 +857,15 @@ function CTA() {
         <motion.h2 variants={fromLeft} style={{ fontFamily:T.head, fontSize:'clamp(2rem,5vw,3.5rem)', fontWeight:800, color:T.white, lineHeight:1.1, marginBottom:'1rem', letterSpacing:'-0.02em' }}>
           Ready to <span style={{ color:T.blue }}>Grow</span> Your Business?
         </motion.h2>
-        <motion.p variants={fromRight} style={{ fontFamily:T.body, color:T.muted, fontSize:'1rem', lineHeight:1.8, marginBottom:'1.8rem' }}>
-          Get a free SEO audit & strategy session. Discover exactly what's holding your site back and how to dominate Google.
+        <motion.p variants={fromRight} style={{ fontFamily:T.body, color:T.muted, fontSize:'1rem', lineHeight:1.8, marginBottom:'2rem' }}>
+          Get a free SEO audit &amp; strategy session. Discover exactly what's holding your site back and how to dominate Google.
         </motion.p>
-        <motion.div variants={fadeUp} style={{ display:'flex', flexWrap:'wrap', justifyContent:'center', gap:'1.2rem', marginBottom:'2.2rem' }}>
+        <motion.div variants={fadeUp} style={{ display:'flex', flexWrap:'wrap', justifyContent:'center', gap:'1.2rem', marginBottom:'2.5rem' }}>
           {['Free Website Audit','Competitor Analysis','Keyword Report','Custom SEO Plan'].map(item => (
             <span key={item} style={{ fontFamily:T.mono, fontSize:'0.68rem', color:'rgba(255,255,255,0.7)', letterSpacing:'0.06em', display:'flex', alignItems:'center', gap:'0.4rem' }}>
               <CheckCircle2 size={12} color={T.blue} />{item}
             </span>
           ))}
-        </motion.div>
-        <motion.div variants={fadeUp} className="cta-form" style={{ display:'flex', gap:'0.75rem', justifyContent:'center', flexWrap:'wrap', marginBottom:'2rem' }}>
-          <input type="text" placeholder="Your website URL or phone number" style={{
-            padding:'0.9rem 1.4rem', borderRadius:10, background:'rgba(255,255,255,0.06)',
-            border:`1px solid ${T.border}`, color:T.text, fontFamily:T.body, fontSize:'0.88rem',
-            outline:'none', width:280, backdropFilter:'blur(8px)',
-          }} />
-          <GlowBtn href="tel:8770161193">Get Free Consultation →</GlowBtn>
         </motion.div>
         <motion.div variants={fadeUp} style={{ display:'flex', gap:'2rem', justifyContent:'center', flexWrap:'wrap' }}>
           {[
