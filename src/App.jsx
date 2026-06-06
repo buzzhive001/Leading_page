@@ -24,8 +24,13 @@ const T = {
 };
 
 /* ── Shared animation variants ──────────────────────────────────── */
-const fadeUp   = { hidden:{ opacity:0, y:32 }, show:{ opacity:1, y:0, transition:{ duration:.55, ease:[.22,1,.36,1] } } };
-const stagger  = { show:{ transition:{ staggerChildren:.09 } } };
+const fadeUp    = { hidden:{ opacity:0, y:40 },    show:{ opacity:1, y:0,   transition:{ duration:.6,  ease:[.22,1,.36,1] } } };
+const fromLeft  = { hidden:{ opacity:0, x:-60 },  show:{ opacity:1, x:0,   transition:{ duration:.65, ease:[.22,1,.36,1] } } };
+const fromRight = { hidden:{ opacity:0, x:60 },   show:{ opacity:1, x:0,   transition:{ duration:.65, ease:[.22,1,.36,1] } } };
+const fromLeft2 = { hidden:{ opacity:0, x:-40 },  show:{ opacity:1, x:0,   transition:{ duration:.55, ease:[.22,1,.36,1] } } };
+const fromRight2= { hidden:{ opacity:0, x:40 },   show:{ opacity:1, x:0,   transition:{ duration:.55, ease:[.22,1,.36,1] } } };
+const stagger   = { show:{ transition:{ staggerChildren:.10 } } };
+const staggerLR = { show:{ transition:{ staggerChildren:.12 } } };
 
 /* ── Custom cursor ────────────────────────────────────────────────── */
 function Cursor() {
@@ -275,7 +280,7 @@ function About() {
       <div style={{ maxWidth:1100, margin:'0 auto', display:'grid', gridTemplateColumns:'1fr 1fr', gap:'4rem', alignItems:'center' }} ref={ref}>
         <motion.div initial="hidden" animate={inView ? 'show' : 'hidden'} variants={stagger}>
           <Label>Who We Are</Label>
-          <motion.h2 variants={fadeUp} style={{ fontFamily:T.head, fontSize:'clamp(1.8rem,3vw,2.7rem)', fontWeight:800, color:T.white, lineHeight:1.15, marginBottom:'1.2rem' }}>
+          <motion.h2 variants={fromLeft} style={{ fontFamily:T.head, fontSize:'clamp(1.8rem,3vw,2.7rem)', fontWeight:800, color:T.white, lineHeight:1.15, marginBottom:'1.2rem' }}>
             Trusted SEO Partner for<br /><span style={{ color:T.blue }}>Sustainable Growth</span>
           </motion.h2>
           <motion.p variants={fadeUp} style={{ fontFamily:T.body, color:T.muted, lineHeight:1.85, marginBottom:'.9rem', fontSize:'.93rem' }}>
@@ -288,8 +293,8 @@ function About() {
 
         <motion.div initial="hidden" animate={inView ? 'show' : 'hidden'} variants={stagger}
           style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'1rem' }}>
-          {stats.map(s => (
-            <motion.div key={s.label} variants={fadeUp}>
+          {stats.map((s, i) => (
+            <motion.div key={s.label} variants={i % 2 === 0 ? fromRight2 : fromRight}>
               <GlassCard style={{ padding:'1.6rem', textAlign:'center' }}>
                 <div style={{ fontFamily:T.head, fontSize:'2.4rem', fontWeight:800, color:s.color, lineHeight:1 }}>
                   <Counter target={s.num} suffix={s.suffix} />
@@ -327,10 +332,10 @@ function Services() {
           </motion.h2>
         </motion.div>
 
-        <motion.div initial="hidden" animate={inView ? 'show' : 'hidden'} variants={stagger}
+        <motion.div initial="hidden" animate={inView ? 'show' : 'hidden'} variants={staggerLR}
           style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))', gap:'1.2rem' }}>
-          {SERVICES.map(s => (
-            <motion.div key={s.title} variants={fadeUp}>
+          {SERVICES.map((s, i) => (
+            <motion.div key={s.title} variants={i % 2 === 0 ? fromLeft2 : fromRight2}>
               <GlassCard style={{ padding:'1.8rem', height:'100%' }}>
                 <div style={{
                   width:44, height:44, borderRadius:12, background:'rgba(0,180,230,0.12)',
@@ -422,10 +427,10 @@ function Plans() {
           </motion.h2>
         </motion.div>
 
-        <motion.div initial="hidden" animate={inView ? 'show' : 'hidden'} variants={stagger}
+        <motion.div initial="hidden" animate={inView ? 'show' : 'hidden'} variants={staggerLR}
           style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))', gap:'1.5rem' }}>
-          {PLANS.map(p => (
-            <motion.div key={p.name} variants={fadeUp} style={{ position:'relative' }}>
+          {PLANS.map((p, i) => (
+            <motion.div key={p.name} variants={i === 0 ? fromLeft : fromRight} style={{ position:'relative' }}>
               {p.popular && (
                 <div style={{
                   position:'absolute', top:-12, left:'50%', transform:'translateX(-50%)',
@@ -511,7 +516,7 @@ function Process() {
 
           <div style={{ display:'flex', flexDirection:'column', gap:'1.2rem' }}>
             {STEPS.map((s, i) => (
-              <motion.div key={s.num} variants={fadeUp} style={{ display:'grid', gridTemplateColumns:'56px 1fr', gap:'1.2rem', alignItems:'start', position:'relative', zIndex:1 }}>
+              <motion.div key={s.num} variants={i % 2 === 0 ? fromLeft : fromRight} style={{ display:'grid', gridTemplateColumns:'56px 1fr', gap:'1.2rem', alignItems:'start', position:'relative', zIndex:1 }}>
                 {/* Node */}
                 <motion.div
                   initial={{ scale:0 }} animate={inView ? { scale:1 } : {}} transition={{ delay: i*.12+.3, type:'spring', stiffness:200 }}
@@ -555,10 +560,10 @@ function WhyUs() {
           <Label>Why Choose Us</Label>
           <motion.h2 variants={fadeUp} style={{ fontFamily:T.head, fontSize:'clamp(1.8rem,3vw,2.6rem)', fontWeight:800, color:T.white }}>Why Aleut for SEO?</motion.h2>
         </motion.div>
-        <motion.div initial="hidden" animate={inView ? 'show' : 'hidden'} variants={stagger}
+        <motion.div initial="hidden" animate={inView ? 'show' : 'hidden'} variants={staggerLR}
           style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))', gap:'1.2rem' }}>
-          {REASONS.map(r => (
-            <motion.div key={r.title} variants={fadeUp}>
+          {REASONS.map((r, i) => (
+            <motion.div key={r.title} variants={i % 2 === 0 ? fromLeft2 : fromRight2}>
               <GlassCard style={{ padding:'1.6rem', display:'flex', gap:'1rem', alignItems:'flex-start' }}>
                 <div style={{ width:40, height:40, borderRadius:10, background:'rgba(0,180,230,0.1)', border:`1px solid rgba(0,180,230,0.2)`, display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
                   <r.Icon size={18} color={T.blue} />
@@ -598,7 +603,7 @@ function FAQ() {
         </motion.div>
         <motion.div initial="hidden" animate={inView ? 'show' : 'hidden'} variants={stagger} style={{ display:'flex', flexDirection:'column', gap:'0.75rem' }}>
           {FAQS.map((f, i) => (
-            <motion.div key={i} variants={fadeUp}>
+            <motion.div key={i} variants={i % 2 === 0 ? fromLeft2 : fromRight2}>
               <div style={{
                 background: open===i ? 'rgba(0,180,230,0.07)' : T.surface,
                 border:`1px solid ${open===i ? T.borderHi : T.border}`,
@@ -645,10 +650,10 @@ function CTA() {
       <div style={{ position:'absolute', inset:0, backgroundImage:`linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px)`, backgroundSize:'48px 48px', pointerEvents:'none' }} />
       <motion.div initial="hidden" animate={inView ? 'show' : 'hidden'} variants={stagger} style={{ maxWidth:680, margin:'0 auto', position:'relative', zIndex:1 }}>
         <Label>Ready to Rank?</Label>
-        <motion.h2 variants={fadeUp} style={{ fontFamily:T.head, fontSize:'clamp(2rem,5vw,3.5rem)', fontWeight:800, color:T.white, lineHeight:1.1, marginBottom:'1rem', letterSpacing:'-0.02em' }}>
+        <motion.h2 variants={fromLeft} style={{ fontFamily:T.head, fontSize:'clamp(2rem,5vw,3.5rem)', fontWeight:800, color:T.white, lineHeight:1.1, marginBottom:'1rem', letterSpacing:'-0.02em' }}>
           Ready to <span style={{ color:T.blue }}>Grow</span> Your Business?
         </motion.h2>
-        <motion.p variants={fadeUp} style={{ fontFamily:T.body, color:T.muted, fontSize:'1rem', lineHeight:1.8, marginBottom:'1.8rem' }}>
+        <motion.p variants={fromRight} style={{ fontFamily:T.body, color:T.muted, fontSize:'1rem', lineHeight:1.8, marginBottom:'1.8rem' }}>
           Get a free SEO audit & strategy session. Discover exactly what's holding your site back and how to dominate Google.
         </motion.p>
         <motion.div variants={fadeUp} style={{ display:'flex', flexWrap:'wrap', justifyContent:'center', gap:'1.2rem', marginBottom:'2.2rem' }}>

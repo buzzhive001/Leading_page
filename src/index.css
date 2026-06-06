@@ -10,6 +10,11 @@ body {
   cursor: none;
 }
 
+/* Clip overflow so left/right slide-ins don't cause horizontal scroll */
+section {
+  overflow: hidden;
+}
+
 a, button { cursor: none; }
 
 input { font-family: 'Inter', sans-serif; }
