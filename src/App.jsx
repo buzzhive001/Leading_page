@@ -803,19 +803,26 @@ function Footer() {
         maxWidth:1100, margin:'0 auto', padding:'2.8rem 5vw',
         display:'flex', justifyContent:'space-between', alignItems:'center', gap:'2rem',
       }}>
-        {/* LEFT — contact info + socials */}
-        <div style={{ display:'flex', flexDirection:'column', gap:'0.85rem' }}>
+        {/* LEFT — logo + company name */}
+        <div style={{ display:'flex', flexDirection:'column', alignItems:'flex-start' }}>
+          <img src={logo} alt="Aleut Technologies" style={{ height:110, objectFit:'contain', maxWidth:260, marginBottom:'0.7rem', opacity:0.98 }} />
+          <p style={{ fontFamily:T.head, fontSize:'1rem', fontWeight:700, color:T.text, letterSpacing:'0.04em' }}>Aleut Technologies Pvt Ltd</p>
+          <p style={{ fontFamily:T.mono, fontSize:'0.6rem', color:T.muted, letterSpacing:'0.08em', marginTop:'0.2rem' }}>Partners in Innovations</p>
+        </div>
+
+        {/* RIGHT — contact info + socials */}
+        <div style={{ display:'flex', flexDirection:'column', gap:'0.85rem', alignItems:'flex-end' }}>
           {contacts.map(({ Icon, label, value, href }) => (
             <a key={label} href={href}
               target={href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer"
               style={{ display:'flex', alignItems:'center', gap:'0.7rem', textDecoration:'none' }}
               onMouseEnter={e => e.currentTarget.style.opacity = '0.8'}
               onMouseLeave={e => e.currentTarget.style.opacity = '1'}>
-              <Icon size={14} color={T.blue} />
-              <div>
+              <div style={{ textAlign:'right' }}>
                 <div style={{ fontFamily:T.mono, fontSize:'0.52rem', letterSpacing:'0.14em', color:T.muted, textTransform:'uppercase', lineHeight:1 }}>{label}</div>
                 <div style={{ color:T.text, fontSize:'0.82rem', fontWeight:600, marginTop:'0.1rem', fontFamily:T.body }}>{value}</div>
               </div>
+              <Icon size={14} color={T.blue} />
             </a>
           ))}
 
@@ -836,12 +843,6 @@ function Footer() {
               </motion.a>
             ))}
           </div>
-        </div>
-
-        {/* RIGHT — logo + company name */}
-        <div style={{ display:'flex', flexDirection:'column', alignItems:'flex-end', textAlign:'right' }}>
-          <img src={logo} alt="Aleut Technologies" style={{ height:80, objectFit:'contain', maxWidth:200, marginBottom:'0.5rem', opacity:0.95 }} />
-          <p style={{ fontFamily:T.mono, fontSize:'0.6rem', color:T.muted, letterSpacing:'0.08em' }}>Aleut Technologies Pvt Ltd</p>
         </div>
       </div>
 
