@@ -1,22 +1,27 @@
 const steps = [
   {
-    num: '01', title: 'Free SEO Audit & Competitor Analysis',
-    desc: 'We analyse your current site health, existing rankings, backlink profile, and map out every competitor ranking for your target keywords. You get a detailed report — free.',
+    num: '01', title: 'SEO Audit & Website Analysis',
+    desc: 'We conduct a detailed analysis of your website to identify technical issues, ranking opportunities, and competitor strengths. What We Analyze: Technical SEO Issues, Website Performance, Competitor Rankings, Keyword Opportunities, User Experience Factors.',
     time: 'Timeline', result: '48 hours',
   },
   {
-    num: '02', title: 'Custom Strategy & 12-Month Roadmap',
-    desc: 'Based on the audit, we build a custom roadmap with priority keywords, content plan, technical fixes, and projected traffic and revenue milestones at 30, 60, and 90 days.',
+    num: '02', title: 'Keyword Research & Strategy',
+    desc: 'Our team discovers high-intent keywords that your potential customers are actively searching for. Targeted Keyword Types: Commercial Keywords, Local Search Terms, Service-Based Keywords, Long-Tail Opportunities, Buyer Intent Queries.',
     time: 'Timeline', result: 'Week 1',
   },
   {
-    num: '03', title: 'Execution: Technical + Content + Links',
-    desc: 'Our team implements fixes, publishes optimised content, and builds authoritative links month over month. You focus on your business — we handle Google.',
-    time: 'First Results', result: 'Day 30–90',
+    num: '03', title: 'Website Optimization',
+    desc: 'We optimize every important SEO element on your website including Meta Titles & Descriptions, Content Optimization, Internal Linking, Schema Markup, URL Structure, and Image Optimization.',
+    time: 'First Results', result: 'Day 30–60',
   },
   {
-    num: '04', title: 'Monthly Reports + Strategy Iteration',
-    desc: 'Live ranking dashboard, monthly video reports, and a strategy call to review performance, adjust to algorithm updates, and scale what\'s working.',
+    num: '04', title: 'Authority Building & Link Acquisition',
+    desc: 'Our off-page SEO strategy focuses on building trust and authority in your industry through High-Authority Backlinks, Local Citations, Business Listings, Digital PR Outreach, and Brand Mentions.',
+    time: 'Ongoing', result: 'Monthly',
+  },
+  {
+    num: '05', title: 'Performance Tracking & Growth',
+    desc: 'We continuously monitor campaign performance and refine strategies for better results. Monthly Reporting Includes: Keyword Rankings, Organic Traffic Growth, Lead Tracking, Conversion Analysis, Competitor Comparison.',
     time: 'Cadence', result: 'Every month', last: true,
   },
 ];
@@ -26,11 +31,11 @@ export default function Process() {
     <section className="process-section section reveal" id="process">
       <div className="process-header">
         <div>
-          <div className="section-tag">How It Works</div>
-          <h2 className="section-h">From zero<br />to page <em>one.</em></h2>
+          <div className="section-tag">How We Work</div>
+          <h2 className="section-h">From audit<br />to page <em>one.</em></h2>
         </div>
         <p className="section-p" style={{ marginBottom: 0 }}>
-          A proven four-step system refined over 150+ campaigns across India. Clear milestones,
+          A proven five-step system refined over 150+ campaigns. Clear milestones,
           measurable outcomes, no guesswork.
         </p>
       </div>

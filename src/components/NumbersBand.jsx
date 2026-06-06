@@ -1,8 +1,8 @@
 const stats = [
-  { num: '150+', label: 'Businesses ranked on page 1' },
-  { num: '6.8×', label: 'Average return on investment' },
-  { num: '312%', label: 'Average traffic increase in 90 days' },
-  { num: '98%',  label: 'Client retention after year one' },
+  { num: '150%', label: 'Average Organic Traffic Growth' },
+  { num: '6X',   label: 'Increase in Qualified Leads' },
+  { num: '70%',  label: 'Improvement in Keyword Rankings' },
+  { num: '95%',  label: 'Client Retention Rate' },
 ];
 
 export default function NumbersBand() {

@@ -3,16 +3,23 @@ export default function CTAFinal() {
     <section className="cta-final reveal" id="cta">
       <div className="cta-grid-bg"></div>
       <h2 className="cta-big">
-        Start<br />
-        <em>Ranking</em><br />
-        <strong>Today.</strong>
+        Ready to<br />
+        <em>Grow Your</em><br />
+        <strong>Business?</strong>
       </h2>
       <p className="cta-sub">
-        Get your free SEO audit — we'll show exactly why competitors outrank you and how to fix it.
+        Get a Free SEO Audit &amp; Strategy Session — Discover what's holding your website back
+        and learn how our SEO experts can help you rank higher, generate more leads,
+        and grow your business in Indore.
       </p>
+      <ul style={{ listStyle: 'none', padding: 0, marginBottom: '2rem', display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}>
+        {['Free Website Audit','Competitor Analysis','Keyword Opportunity Report','Custom SEO Strategy'].map(item => (
+          <li key={item} style={{ color: 'var(--teal)', fontSize: '0.85rem', fontWeight: 600 }}>✓ {item}</li>
+        ))}
+      </ul>
       <div className="cta-form">
         <input type="text" placeholder="Your website URL or WhatsApp number" />
-        <button type="button">Get Free Audit →</button>
+        <button type="button">Schedule Free Consultation →</button>
       </div>
       <p className="cta-note">Free · No commitment · Report delivered in 48 hours</p>
       <div className="cta-socials">
