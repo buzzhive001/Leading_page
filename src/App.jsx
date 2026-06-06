@@ -815,6 +815,7 @@ function Footer() {
           {contacts.map(({ Icon, label, value, href }) => (
             <a key={label} href={href}
               target={href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer"
+              className="footer-contact-item"
               style={{ display:'flex', alignItems:'center', gap:'0.7rem', textDecoration:'none' }}
               onMouseEnter={e => e.currentTarget.style.opacity = '0.8'}
               onMouseLeave={e => e.currentTarget.style.opacity = '1'}>
