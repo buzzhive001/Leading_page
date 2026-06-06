@@ -33,14 +33,6 @@ section { overflow-x: clip; }
   .hamburger { display: none !important; }
 }
 
-/* ── Navbar logo: shrink on mobile ────────────────────────────── */
-@media (max-width: 860px) {
-  .nav-logo {
-    height: 48px !important;
-    max-width: 140px !important;
-  }
-}
-
 /* ── Hide custom cursor on touch devices ───────────────────────── */
 @media (hover: none) and (pointer: coarse) {
   body, a, button { cursor: auto !important; }

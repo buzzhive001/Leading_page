@@ -163,18 +163,28 @@ function ContactBar() {
 
 /* ── Navbar ──────────────────────────────────────────────────────── */
 const NAV = ['Services','Process','Why Us','FAQ'];
+const MOBILE_BP = 860;
+const NAV_H_DESKTOP = 86;
+const NAV_H_MOBILE  = 60;
+
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mOpen, setMOpen]       = useState(false);
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= MOBILE_BP);
+
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', fn);
-    return () => window.removeEventListener('scroll', fn);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onResize = () => setIsMobile(window.innerWidth <= MOBILE_BP);
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('resize', onResize);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+    };
   }, []);
 
-  const navBg = scrolled
-    ? 'rgba(8,13,24,0.97)'
-    : 'rgba(8,13,24,1)';
+  const navH  = isMobile ? NAV_H_MOBILE : NAV_H_DESKTOP;
+  const navBg = scrolled ? 'rgba(8,13,24,0.97)' : 'rgba(8,13,24,1)';
 
   return (
     <>
@@ -186,10 +196,14 @@ function Navbar() {
           backdropFilter:'blur(24px)',
           borderBottom:`1px solid ${scrolled ? 'rgba(0,180,230,0.18)' : 'rgba(255,255,255,0.06)'}`,
           display:'flex', alignItems:'center', justifyContent:'space-between',
-          padding:'0 5vw', height:86, transition:'all .3s',
+          padding:'0 5vw', height:navH, transition:'all .3s',
           boxShadow: scrolled ? '0 4px 32px rgba(0,0,0,0.45)' : 'none',
+          overflow:'hidden',
         }}>
-        <img src={logo} alt="Aleut Technologies" className="nav-logo" style={{ height:76, objectFit:'contain', maxWidth:200 }} />
+        <img
+          src={logo} alt="Aleut Technologies" className="nav-logo"
+          style={{ height: isMobile ? 44 : 76, objectFit:'contain', maxWidth: isMobile ? 130 : 200 }}
+        />
 
         {/* Desktop links */}
         <ul style={{ display:'flex', gap:'2.2rem', listStyle:'none', margin:0, padding:0 }} className="nav-links">
@@ -217,7 +231,7 @@ function Navbar() {
           className="hamburger"
           style={{
             display:'none', flexDirection:'column', gap:5, background:'none',
-            border:'none', padding:'6px', cursor:'pointer',
+            border:'none', padding:'6px', cursor:'pointer', flexShrink:0,
           }}>
           {[0,1,2].map(i => (
             <motion.span key={i}
@@ -239,7 +253,7 @@ function Navbar() {
             initial={{ opacity:0, y:-16 }} animate={{ opacity:1, y:0 }} exit={{ opacity:0, y:-16 }}
             transition={{ duration:.28 }}
             style={{
-              position:'fixed', top:86, left:0, right:0, zIndex:199,
+              position:'fixed', top:navH, left:0, right:0, zIndex:199,
               background:'rgba(8,13,24,0.98)', backdropFilter:'blur(24px)',
               borderBottom:`1px solid ${T.border}`,
               padding:'1.4rem 6vw 1.8rem',
@@ -257,7 +271,7 @@ function Navbar() {
               </a>
             ))}
             <div style={{ marginTop:'1.2rem' }}>
-              <GlowBtn href="#cta" style={{ width:'100%', justifyContent:'center' }}>Get Free Audit</GlowBtn>
+              <GlowBtn href="#cta" style={{ width:'100%', justifyContent:'center' }} onClick={() => setMOpen(false)}>Get Free Audit</GlowBtn>
             </div>
           </motion.div>
         )}
