@@ -103,17 +103,7 @@ section { overflow-x: clip; }
   }
 }
 
-/* ── Footer contact items: icon-right layout on desktop ────────── */
-@media (min-width: 641px) {
-  .footer-contact-item {
-    flex-direction: row-reverse;
-  }
-  .footer-contact-text {
-    text-align: right;
-  }
-}
-
-/* ── Footer: stack on mobile ───────────────────────────────────── */
+/* ── Footer: stack on mobile, icon-left natural layout ────────── */
 @media (max-width: 640px) {
   .footer-main {
     flex-direction: column !important;

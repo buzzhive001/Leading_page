@@ -811,7 +811,7 @@ function Footer() {
         </div>
 
         {/* RIGHT — contact info + socials */}
-        <div style={{ display:'flex', flexDirection:'column', gap:'0.85rem', alignItems:'flex-end' }}>
+        <div style={{ display:'flex', flexDirection:'column', gap:'0.85rem', alignItems:'flex-start' }}>
           {contacts.map(({ Icon, label, value, href }) => (
             <a key={label} href={href}
               target={href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer"
