@@ -103,23 +103,25 @@ section { overflow-x: clip; }
   }
 }
 
+/* ── Footer contact items: icon-right layout on desktop ────────── */
+@media (min-width: 641px) {
+  .footer-contact-item {
+    flex-direction: row-reverse;
+  }
+  .footer-contact-text {
+    text-align: right;
+  }
+}
+
 /* ── Footer: stack on mobile ───────────────────────────────────── */
 @media (max-width: 640px) {
   .footer-main {
     flex-direction: column !important;
     align-items: flex-start !important;
   }
-  /* Right col: reset to left-aligned on mobile */
   .footer-main > div:last-child {
     align-items: flex-start !important;
     width: 100%;
-  }
-  /* Contact rows: icon left, text left */
-  .footer-contact-item {
-    flex-direction: row-reverse !important;
-  }
-  .footer-contact-item > div {
-    text-align: left !important;
   }
   /* Social icons: left-align */
   .footer-main > div:last-child > div:last-child {

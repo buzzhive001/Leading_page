@@ -819,11 +819,11 @@ function Footer() {
               style={{ display:'flex', alignItems:'center', gap:'0.7rem', textDecoration:'none' }}
               onMouseEnter={e => e.currentTarget.style.opacity = '0.8'}
               onMouseLeave={e => e.currentTarget.style.opacity = '1'}>
-              <div style={{ textAlign:'right' }}>
+              <Icon size={14} color={T.blue} />
+              <div className="footer-contact-text">
                 <div style={{ fontFamily:T.mono, fontSize:'0.52rem', letterSpacing:'0.14em', color:T.muted, textTransform:'uppercase', lineHeight:1 }}>{label}</div>
                 <div style={{ color:T.text, fontSize:'0.82rem', fontWeight:600, marginTop:'0.1rem', fontFamily:T.body }}>{value}</div>
               </div>
-              <Icon size={14} color={T.blue} />
             </a>
           ))}
 
