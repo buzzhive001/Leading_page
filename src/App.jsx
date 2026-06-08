@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import emailjs from '@emailjs/browser';
 import { motion, useInView, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Search, Zap, Link2, Code2, ShoppingCart, FileText, Trophy, Target, Users, MessageCircle, TrendingUp, CheckCircle2, Phone, Mail, Globe } from 'lucide-react';
 import logo from './assets/logo.png';
@@ -308,20 +307,12 @@ function Hero() {
     e.preventDefault();
     setStatus('sending');
     try {
-      await emailjs.send(
-        EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID,
-        { name: form.name, email: form.email, phone: form.phone, website: form.website },
-        EMAILJS_PUBLIC_KEY,
-      );
-      // Also save to Google Sheets (Excel)
-      if (SHEETS_URL !== 'YOUR_GOOGLE_SCRIPT_URL') {
-        fetch(SHEETS_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'text/plain' },
-          body: JSON.stringify({ name: form.name, email: form.email, phone: form.phone, website: form.website }),
-        }).catch(() => {});
-      }
+      await fetch(SHEETS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify({ name: form.name, email: form.email, phone: form.phone, website: form.website }),
+      });
       setStatus('success');
       setForm({ name:'', email:'', phone:'', website:'' });
     } catch {
@@ -851,12 +842,7 @@ function FAQ() {
   );
 }
 
-/* ── EmailJS credentials ── */
-const EMAILJS_SERVICE_ID  = 'service_0kefz7b';
-const EMAILJS_TEMPLATE_ID = 'template_8je985n';
-const EMAILJS_PUBLIC_KEY  = 'yVK0ExFBCF9f26nH8';
-
-/* ── Google Sheets Web App URL (paste your deployed script URL here) ── */
+/* ── Google Sheets Web App URL ── */
 const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxPIdARxrkQIJ2_JzqirTwBJfbULey5gKo8FW3LsbJS3BGrtU4idTk7_UF-Lmsvy7F_Dg/exec';
 
 /* ── CTA ─────────────────────────────────────────────────────────── */
