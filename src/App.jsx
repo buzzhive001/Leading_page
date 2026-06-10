@@ -612,7 +612,7 @@ const PLANS = [
       { label:'Full Technical SEO Audit & All Fixes' },
       { label:'On-Page SEO', value:'Unlimited Pages' },
       { label:'SEO Blog Posts/Month', value:'4' },
-      { label:'High-DA Backlinks/Month', value:'15+' },
+      { label:'High-DA Backlinks/Month', value:'40+' },
       { label:'Guest Posting on Niche Sites' },
       { label:'Rank Tracking Reports', value:'Weekly' },
       { label:'Dedicated Account Manager' },
