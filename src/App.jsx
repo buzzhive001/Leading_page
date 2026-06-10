@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion, useInView, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Search, Zap, Link2, Code2, ShoppingCart, FileText, Trophy, Target, Users, MessageCircle, TrendingUp, CheckCircle2, Phone, Mail, Globe } from 'lucide-react';
 import logo from './assets/logo.png';
@@ -281,6 +282,9 @@ function Navbar() {
 
 /* ── Hero ────────────────────────────────────────────────────────── */
 function Hero() {
+  const { pathname } = useLocation();
+  const isIndore = pathname === '/indore';
+
   const metrics = [
     { val:'150+', label:'Page 1 Rankings', delay:.3 },
     { val:'6X',   label:'Lead Growth',     delay:.45 },
@@ -348,6 +352,9 @@ function Hero() {
                 initial={{ scaleX:0, originX:0 }} animate={{ scaleX:1 }} transition={{ delay:.8, duration:.8 }}
               />
             </span>
+            {isIndore && (
+              <> {' '}in <span style={{ color:T.blue }}>Indore</span></>
+            )}
           </motion.h1>
 
           <motion.p variants={fadeUp} style={{ fontFamily:T.body, fontSize:'1rem', color:T.muted, lineHeight:1.8, marginBottom:'2.5rem' }}>
