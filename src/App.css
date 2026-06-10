@@ -3,14 +3,14 @@ body { font-family: 'Poppins', sans-serif; background: #fff; color: #0d1b2a; cur
 html { scroll-behavior: smooth; }
 a, button { cursor: none; }
 
-@keyframes marquee-ltr {
-  0%   { transform: translateX(-50%); }
-  100% { transform: translateX(0%); }
+@keyframes marquee-rtl {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
 }
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee-ltr 18s linear infinite;
+  animation: marquee-rtl 20s linear infinite;
 }
 .marquee-track:hover { animation-play-state: paused; }
 
