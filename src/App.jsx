@@ -1000,16 +1000,16 @@ const CLIENT_LOGOS = [clientLogo1, clientLogo2, clientLogo3, clientLogo4, client
 function ClientLogos() {
   const doubled = [...CLIENT_LOGOS, ...CLIENT_LOGOS];
   return (
-    <section style={{ background:T.bg2, borderTop:`1px solid ${T.border}`, borderBottom:`1px solid ${T.border}`, padding:'1.5rem 0', overflow:'hidden' }}>
+    <section style={{ background:'#ffffff', borderTop:`1px solid ${T.border}`, borderBottom:`1px solid ${T.border}`, padding:'1.8rem 0', overflow:'hidden' }}>
       <div style={{ overflow:'hidden', width:'100%' }}>
         <div className="marquee-track">
           {doubled.map((src, i) => (
-            <div key={i} style={{ flexShrink:0, padding:'0 2.5rem', display:'flex', alignItems:'center', justifyContent:'center' }}>
+            <div key={i} style={{ flexShrink:0, padding:'0 3rem', display:'flex', alignItems:'center', justifyContent:'center' }}>
               <img
                 src={src} alt={`client-${i}`}
-                style={{ height:90, maxWidth:220, objectFit:'contain', filter:'grayscale(40%) brightness(1.1)', opacity:0.85, transition:'all .3s' }}
-                onMouseEnter={e => { e.currentTarget.style.filter='grayscale(0%) brightness(1.2)'; e.currentTarget.style.opacity='1'; }}
-                onMouseLeave={e => { e.currentTarget.style.filter='grayscale(40%) brightness(1.1)'; e.currentTarget.style.opacity='0.85'; }}
+                style={{ height:110, maxWidth:260, objectFit:'contain', filter:'grayscale(20%)', opacity:0.9, transition:'all .3s' }}
+                onMouseEnter={e => { e.currentTarget.style.filter='grayscale(0%)'; e.currentTarget.style.opacity='1'; e.currentTarget.style.transform='scale(1.05)'; }}
+                onMouseLeave={e => { e.currentTarget.style.filter='grayscale(20%)'; e.currentTarget.style.opacity='0.9'; e.currentTarget.style.transform='scale(1)'; }}
               />
             </div>
           ))}
