@@ -592,6 +592,18 @@ function StatsBand() {
 
 /* ── Plans ───────────────────────────────────────────────────────── */
 const PLANS = [
+  { name:'STARTER PLAN — LOCAL SEO', accent:'#a78bfa',
+    subtitle:'For local businesses, clinics, shops, restaurants, coaching centres, and other',
+    items:[
+      { label:'Google Maps Rankings' },
+      { label:'Rank On', value:'4–5 Keywords' },
+      { label:'Google Posts/Month', value:'30' },
+      { label:'Results In', value:'3 Months' },
+      { label:'GMB SEO Report', value:'Monthly' },
+      { label:'Backlinks', value:'25–40' },
+      { label:'Local SEO Audit' },
+      { label:'Competitors Analysis' },
+    ]},
   { name:'FULL SEO PACKAGE', accent:'#f59e0b', popular:true,
     subtitle:'For businesses that want serious city-wide or national growth',
     note:'Minimum 3 months recommended for visible results',
@@ -605,17 +617,6 @@ const PLANS = [
       { label:'Rank Tracking Reports', value:'Weekly' },
       { label:'Dedicated Account Manager' },
       { label:'Monthly Strategy Review Call' },
-    ]},
-  { name:'DOMINANCE PLAN', accent:'#a78bfa',
-    items:[
-      { label:'Google Maps Rankings' },
-      { label:'Rank On', value:'4–5 Keywords' },
-      { label:'Google Posts/Month', value:'30' },
-      { label:'Results In', value:'3 Months' },
-      { label:'GMB SEO Report', value:'Monthly' },
-      { label:'Backlinks', value:'25–40' },
-      { label:'Local SEO Audit' },
-      { label:'Competitors Analysis' },
     ]},
 ];
 
@@ -650,9 +651,9 @@ function Plans() {
                 border:`1px solid ${p.popular ? 'rgba(245,158,11,0.45)' : 'rgba(167,139,250,0.4)'}`,
                 boxShadow: p.popular ? '0 0 40px rgba(245,158,11,0.12)' : '0 0 40px rgba(167,139,250,0.12)',
               }}>
-                <div style={{ background: p.popular ? 'linear-gradient(135deg,rgba(245,158,11,0.25),rgba(245,158,11,0.08))' : 'linear-gradient(135deg,rgba(124,58,237,0.3),rgba(167,139,250,0.15))', padding:'1.3rem 1.8rem', borderBottom:`1px solid ${T.border}` }}>
-                  <h3 style={{ fontFamily:T.head, fontSize:'0.9rem', fontWeight:800, letterSpacing:'0.1em', color:'#fff', marginBottom: p.subtitle ? '0.45rem' : 0 }}>{p.name}</h3>
-                  {p.subtitle && <p style={{ fontFamily:T.body, fontSize:'0.78rem', color:'rgba(255,255,255,0.7)', lineHeight:1.5, marginBottom:'0.3rem' }}>{p.subtitle}</p>}
+                <div style={{ background: p.popular ? 'linear-gradient(135deg,rgba(245,158,11,0.25),rgba(245,158,11,0.08))' : 'linear-gradient(135deg,rgba(124,58,237,0.3),rgba(167,139,250,0.15))', padding:'1.3rem 1.8rem', borderBottom:`1px solid ${T.border}`, minHeight: p.subtitle ? undefined : '5.5rem', display:'flex', flexDirection:'column', justifyContent:'center' }}>
+                  <h3 style={{ fontFamily:T.head, fontSize:'0.88rem', fontWeight:800, letterSpacing:'0.08em', color:'#fff', marginBottom:'0.45rem' }}>{p.name}</h3>
+                  {p.subtitle && <p style={{ fontFamily:T.body, fontSize:'0.76rem', color:'rgba(255,255,255,0.7)', lineHeight:1.5, marginBottom:'0.3rem' }}>{p.subtitle}</p>}
                   {p.note    && <p style={{ fontFamily:T.mono, fontSize:'0.6rem', color:p.accent, letterSpacing:'0.06em' }}>⏱ {p.note}</p>}
                 </div>
                 <div style={{ padding:'1.4rem 1.8rem' }}>
