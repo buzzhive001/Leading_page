@@ -1007,7 +1007,7 @@ function ClientLogos() {
             <div key={i} style={{ flexShrink:0, padding:'0 2.5rem', display:'flex', alignItems:'center', justifyContent:'center' }}>
               <img
                 src={src} alt={`client-${i}`}
-                style={{ height:52, maxWidth:140, objectFit:'contain', filter:'grayscale(40%) brightness(1.1)', opacity:0.85, transition:'all .3s' }}
+                style={{ height:90, maxWidth:220, objectFit:'contain', filter:'grayscale(40%) brightness(1.1)', opacity:0.85, transition:'all .3s' }}
                 onMouseEnter={e => { e.currentTarget.style.filter='grayscale(0%) brightness(1.2)'; e.currentTarget.style.opacity='1'; }}
                 onMouseLeave={e => { e.currentTarget.style.filter='grayscale(40%) brightness(1.1)'; e.currentTarget.style.opacity='0.85'; }}
               />
