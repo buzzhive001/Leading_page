@@ -7,7 +7,7 @@ import clientLogo1 from './assets/smail care .png';
 import clientLogo2 from './assets/Arogyaman logo PNG.png';
 import clientLogo3 from './assets/dr-thori-logo.png';
 import clientLogo4 from './assets/ips-logo.png';
-import clientLogo5 from './assets/271733465_3072150276372700_6159520129664053776_n.jpg.jpeg';
+import clientLogo5 from './assets/271733465_3072150276372700_6159520129664053776_n.jpg-removebg-preview.png';
 import './App.css';
 
 /* ── Design tokens (Kinetic Precision — Dark) ───────────────────── */
