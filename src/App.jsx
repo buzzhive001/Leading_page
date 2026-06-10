@@ -592,17 +592,21 @@ function StatsBand() {
 
 /* ── Plans ───────────────────────────────────────────────────────── */
 const PLANS = [
-  { name:'VISIBILITY PLAN', accent:T.blue,
+  { name:'FULL SEO PACKAGE', accent:'#f59e0b', popular:true,
+    subtitle:'For businesses that want serious city-wide or national growth',
+    note:'Minimum 3 months recommended for visible results',
     items:[
-      { label:'Google Maps Rankings' },
-      { label:'Rank On', value:'2–3 Keywords' },
-      { label:'Google Posts/Month', value:'15' },
-      { label:'Results In', value:'3 Months' },
-      { label:'GMB SEO Report', value:'Monthly' },
-      { label:'Backlinks', value:'25–30' },
-      { label:'Competitors Analysis' },
+      { label:'Everything in Local SEO Plan' },
+      { label:'Full Technical SEO Audit & All Fixes' },
+      { label:'On-Page SEO', value:'Unlimited Pages' },
+      { label:'SEO Blog Posts/Month', value:'4' },
+      { label:'High-DA Backlinks/Month', value:'15+' },
+      { label:'Guest Posting on Niche Sites' },
+      { label:'Rank Tracking Reports', value:'Weekly' },
+      { label:'Dedicated Account Manager' },
+      { label:'Monthly Strategy Review Call' },
     ]},
-  { name:'DOMINANCE PLAN', accent:'#a78bfa', popular:true,
+  { name:'DOMINANCE PLAN', accent:'#a78bfa',
     items:[
       { label:'Google Maps Rankings' },
       { label:'Rank On', value:'4–5 Keywords' },
@@ -635,18 +639,21 @@ function Plans() {
               {p.popular && (
                 <div style={{
                   position:'absolute', top:-12, left:'50%', transform:'translateX(-50%)',
-                  background:'linear-gradient(90deg,#a78bfa,#7c3aed)', color:'#fff',
+                  background:'linear-gradient(90deg,#f59e0b,#d97706)', color:'#fff',
                   fontSize:'0.6rem', fontWeight:700, letterSpacing:'0.12em',
                   padding:'0.25rem 1rem', borderRadius:20, zIndex:1,
-                  fontFamily:T.mono, textTransform:'uppercase',
-                }}>Most Popular</div>
+                  fontFamily:T.mono, textTransform:'uppercase', whiteSpace:'nowrap',
+                }}>⭐ Most Popular</div>
               )}
               <GlassCard hoverGlow={true} style={{
-                overflow:'hidden', border:`1px solid ${p.popular ? 'rgba(167,139,250,0.4)' : T.border}`,
-                boxShadow: p.popular ? '0 0 40px rgba(167,139,250,0.12)' : undefined,
+                overflow:'hidden',
+                border:`1px solid ${p.popular ? 'rgba(245,158,11,0.45)' : 'rgba(167,139,250,0.4)'}`,
+                boxShadow: p.popular ? '0 0 40px rgba(245,158,11,0.12)' : '0 0 40px rgba(167,139,250,0.12)',
               }}>
-                <div style={{ background: p.popular ? 'linear-gradient(135deg,rgba(124,58,237,0.3),rgba(167,139,250,0.15))' : 'rgba(0,180,230,0.08)', padding:'1.3rem 1.8rem', borderBottom:`1px solid ${T.border}` }}>
-                  <h3 style={{ fontFamily:T.head, fontSize:'0.9rem', fontWeight:800, letterSpacing:'0.1em', color:'#fff' }}>{p.name}</h3>
+                <div style={{ background: p.popular ? 'linear-gradient(135deg,rgba(245,158,11,0.25),rgba(245,158,11,0.08))' : 'linear-gradient(135deg,rgba(124,58,237,0.3),rgba(167,139,250,0.15))', padding:'1.3rem 1.8rem', borderBottom:`1px solid ${T.border}` }}>
+                  <h3 style={{ fontFamily:T.head, fontSize:'0.9rem', fontWeight:800, letterSpacing:'0.1em', color:'#fff', marginBottom: p.subtitle ? '0.45rem' : 0 }}>{p.name}</h3>
+                  {p.subtitle && <p style={{ fontFamily:T.body, fontSize:'0.78rem', color:'rgba(255,255,255,0.7)', lineHeight:1.5, marginBottom:'0.3rem' }}>{p.subtitle}</p>}
+                  {p.note    && <p style={{ fontFamily:T.mono, fontSize:'0.6rem', color:p.accent, letterSpacing:'0.06em' }}>⏱ {p.note}</p>}
                 </div>
                 <div style={{ padding:'1.4rem 1.8rem' }}>
                   <ul style={{ listStyle:'none', display:'flex', flexDirection:'column', gap:'0.7rem', marginBottom:'1.6rem' }}>
